@@ -1,0 +1,7 @@
+{
+  "name": "appLoginChachas",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
