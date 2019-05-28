@@ -29,4 +29,13 @@ export class MototaxisService {
       })
     }))
   }
+
+  getMototaxiUsuario(idMotoTaxi: string){
+    return this.db.collection('motoTaxis').doc(idMotoTaxi).snapshotChanges().pipe(map(taxis=> {
+        const data = taxis.payload.data() as motoTaxi;
+        data.idMotoTaxi = taxis.payload.id;
+        console.log(data);
+        return data;
+    }))
+  }
 }

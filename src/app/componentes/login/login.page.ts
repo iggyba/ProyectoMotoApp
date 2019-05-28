@@ -4,6 +4,7 @@ import { AuthService } from "../../servicios/auth.service";
 
 import { Router } from "@angular/router";
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -20,8 +21,16 @@ export class LoginPage implements OnInit {
   }
 
   logear(){
-    this.auhtService.login(this.email,this.password).then( res =>{
+     
+     this.auhtService.login(this.email,this.password).then( res =>{
      this.router.navigate(['/datos']);
-    }).catch(err => alert("Los datos introducidos fueron incorrectos"))
-  }
+     this.email="";
+     this.password="";
+     
+    }).catch(err => {
+      alert("Los datos introducidos fueron incorrectos");
+      this.email="";
+      this.password="";
+    })
+    }
 }
