@@ -7,13 +7,13 @@ export const environment = {
 };
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyAp-EuEBB6cUrV2Y6o1Ko7ROS_usTs9F3M",
-  authDomain: "loginchachas.firebaseapp.com",
-  databaseURL: "https://loginchachas.firebaseio.com",
-  projectId: "loginchachas",
-  storageBucket: "loginchachas.appspot.com",
-  messagingSenderId: "574680781578",
-  appId: "1:574680781578:web:59da965abf6c208c"
+  apiKey: "AIzaSyAh7u1GAnf4KfOaJcpQGYEPjTs1IRND_vg",
+  authDomain: "chachas-3820f.firebaseapp.com",
+  databaseURL: "https://chachas-3820f.firebaseio.com",
+  projectId: "chachas-3820f",
+  storageBucket: "chachas-3820f.appspot.com",
+  messagingSenderId: "62198110064",
+  appId: "1:62198110064:web:3146d79e1812f2a7"
 };
 /*
  * For easier debugging in development mode, you can import the following file
