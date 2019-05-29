@@ -8,6 +8,7 @@ import { NavParams, ModalController } from "@ionic/angular";
 import { UbicacionService } from '../../servicios/ubicacion.service'
 import { error } from '@angular/compiler/src/util';
 import { AngularFirestore } from '@angular/fire/firestore'
+import { AuthService } from "../../servicios/auth.service";
 
 @Component({
   selector: 'app-ubicacion',
@@ -24,15 +25,16 @@ export class UbicacionPage implements OnInit {
 
   public isToggled: boolean;
 
-  constructor(public geo: Geolocation, public ubicacionService: UbicacionService ) {}
+  constructor(public geo: Geolocation, public ubicacionService: UbicacionService, public auth: AuthService) {}
 
+  
   ngOnInit() {
     
    }
 
   MandarUbicacion(toogleValue: boolean) {
     console.log(this.isToggled)
-
+    console.log(this.auth.getUidUser());
     if (toogleValue) {
       let watch = this.geo.watchPosition();
       watch.subscribe((data) => {
@@ -43,7 +45,8 @@ export class UbicacionPage implements OnInit {
           Latitud: data.coords.latitude,
           Longitud: data.coords.longitude,
         }
-       this.ubicacionService.sndUbicAFireBase(loc,'nada');
+        
+       this.ubicacionService.sndUbicAFireBase(loc,this.auth.getUidUser());
       });
     } 
   }

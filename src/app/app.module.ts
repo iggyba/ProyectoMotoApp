@@ -10,7 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {Geolocation} from '@ionic-native/geolocation/ngx'
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { firebaseConfing } from '../environments/environment'
+import { firebaseConfig } from '../environments/environment'
 import { AngularFireModule} from '@angular/fire'
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore'
@@ -21,7 +21,7 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, 
-  AngularFireModule.initializeApp(firebaseConfing), AngularFirestoreModule,AngularFireStorageModule],
+  AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule,AngularFireStorageModule,AngularFireAuthModule],
   providers: [
     StatusBar,
     SplashScreen, 

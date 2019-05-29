@@ -25,7 +25,7 @@ export class DatosPage implements OnInit {
   }
 
   conectar(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/ubicacion']);
   }
 
  
