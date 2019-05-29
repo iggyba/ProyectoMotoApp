@@ -15,11 +15,13 @@ import { AngularFireModule} from '@angular/fire'
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore'
 import { FormsModule } from "@angular/forms";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireModule.initializeApp(firebaseConfing), AngularFirestoreModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, 
+  AngularFireModule.initializeApp(firebaseConfing), AngularFirestoreModule,AngularFireStorageModule],
   providers: [
     StatusBar,
     SplashScreen, 
@@ -27,6 +29,7 @@ import { FormsModule } from "@angular/forms";
     
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  },
     { provide: FirestoreSettingsToken, useValue: {}}
+
   ],
   bootstrap: [AppComponent]
 })

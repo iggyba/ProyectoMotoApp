@@ -6,14 +6,14 @@ export const environment = {
   production: false
 };
 
-export const firebaseConfing = {
-  apiKey: "AIzaSyDprfnBvs802wk55ORE740mEX1Kt5JW0xg",
-  authDomain: "pruebasfabri-a07aa.firebaseapp.com",
-  databaseURL: "https://pruebasfabri-a07aa.firebaseio.com",
-  projectId: "pruebasfabri-a07aa",
-  storageBucket: "pruebasfabri-a07aa.appspot.com",
-  messagingSenderId: "815624590865",
-  appId: "1:815624590865:web:4dc61b99d08b8c7d"
+export const firebaseConfig = {
+  apiKey: "AIzaSyAwPVADwAe4kocvRPw5JIMZV_qGoaIeM00",
+  authDomain: "chachasmotos.firebaseapp.com",
+  databaseURL: "https://chachasmotos.firebaseio.com",
+  projectId: "chachasmotos",
+  storageBucket: "chachasmotos.appspot.com",
+  messagingSenderId: "605621181338",
+  appId: "1:605621181338:web:e5851b96745d3d70"
 };
 
 /*
