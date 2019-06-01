@@ -15,7 +15,6 @@ export const firebaseConfig = {
   messagingSenderId: "605621181338",
   appId: "1:605621181338:web:e5851b96745d3d70"
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
