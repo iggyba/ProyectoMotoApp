@@ -6,7 +6,6 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding>
 <h5 text-center><b><u>Detalles del pedido</u></b></h5>
   <ion-list>
@@ -20,8 +19,10 @@
         <ion-item>
             <p><b>Estado:</b> {{pedidos.estadoPedido}}</p>
         </ion-item>
-        <br>
-  <ion-button (click)="updateEstado()" expand = "block" color = "success">Confirmar entrega</ion-button>
       </div>
   </ion-list>
+    
+    <br>
+  <ion-button (click)="updateEstado()" expand = "block" color = "success">Confirmar entrega</ion-button>
 </ion-content>
+
