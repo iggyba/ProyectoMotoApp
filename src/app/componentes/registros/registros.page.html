@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>Registrar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <img class="icon" src="assets/icon/icon.png" alt="">
+  <ion-item>
+    <ion-label position="floating">nombre </ion-label>
+    <ion-input type="text"  [(ngModel)]="nombreMotoTaxi" name="nombreMotoTaxi"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">apellido </ion-label>
+    <ion-input type="text"  [(ngModel)]="apellidoMotoTaxi" name="apellidoMotoTaxi"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">teléfono </ion-label>
+    <ion-input type="text"  [(ngModel)]="telefonoMotoTaxi" name="telefonoMotoTaxi"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">placa del vehículo </ion-label>
+    <ion-input type="text"  [(ngModel)]="placaMotoTaxi" name="placaMotoTaxi"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">email </ion-label>
+    <ion-input type="text"  [(ngModel)]="email" name="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">contraseña </ion-label>
+    <ion-input type="password"  [(ngModel)]="password" name="password"></ion-input>
+  </ion-item>
+  <br>
+    <ion-label>Seleccionar imagen:</ion-label>
+
+    <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
+      <input type="file" id="fichero-tarifas" class="input-file" accept=".png, .jpg" (change)="onUpload($event)" value="">
+      Subir Imagen...
+      </div>
+
+    <ion-input   type="hidden" [value]="urlImagen | async" [(ngModel)]="imagenMotoTaxi" value=""></ion-input>
+  <br>
+  <ion-button  *ngIf="urlImagen | async; else registarDisabled"  (click)="registrando()" expand="block" color="secondary" >Registrar</ion-button>
+
+  <ng-template #registarDisabled>
+    <ion-button (click)="registrando()" expand="block" color="secondary" disabled="true">Registrar</ion-button>
+  </ng-template>
+</ion-content>
