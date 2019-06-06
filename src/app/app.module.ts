@@ -17,6 +17,8 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { FormsModule } from "@angular/forms";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 
+import { FCM } from '@ionic-native/fcm/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,10 +28,10 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
     StatusBar,
     SplashScreen, 
     Geolocation,
+    FCM,
     
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  },
     { provide: FirestoreSettingsToken, useValue: {}}
-
   ],
   bootstrap: [AppComponent]
 })

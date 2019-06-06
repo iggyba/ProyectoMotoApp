@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: 'datos', loadChildren: './componentes/datos/datos.module#DatosPageModule' },
   { path: 'registros', loadChildren: './componentes/registros/registros.module#RegistrosPageModule' },
   { path: 'ubicacion', loadChildren: './componentes/ubicacion/ubicacion.module#UbicacionPageModule' },
+  { path: 'second/:price', loadChildren: './second/second.module#SecondPageModule' },
+
 ];
 
 @NgModule({
