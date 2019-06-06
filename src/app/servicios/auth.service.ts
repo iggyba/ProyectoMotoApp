@@ -43,6 +43,7 @@ export class AuthService {
         telefonoMotoTaxi: telefono,
         placaMotoTaxi: placa,
         imagenMotoTaxi:imagen,
+        disponible: false,
         uid: uid
       })
       alert("Moto Taxista registrado con éxito");

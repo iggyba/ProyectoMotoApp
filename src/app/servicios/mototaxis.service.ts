@@ -11,6 +11,7 @@ export interface motoTaxi{
   telefonoMotoTaxi: string;
   placaMotoTaxi: string;
   idMotoTaxi: string;
+  disponible: boolean;
 }
 
 @Injectable({

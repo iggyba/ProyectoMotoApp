@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from "../../servicios/auth.service";
-
+import { EstadoService } from "../../servicios/estado.service";
 import { Router } from "@angular/router";
 
 
@@ -12,7 +12,7 @@ import { Router } from "@angular/router";
 })
 export class LoginPage implements OnInit {
 
-  constructor(private auhtService: AuthService, public router : Router) { }
+  constructor(private auhtService: AuthService, public router : Router, public estadoService: EstadoService) { }
 
   email : string;
   password : string;
@@ -26,6 +26,7 @@ export class LoginPage implements OnInit {
      this.router.navigate(['/datos']);
      this.email="";
      this.password="";
+     this.estadoService.cambiarEstado();
      
     }).catch(err => {
       alert("Los datos introducidos fueron incorrectos");
@@ -33,4 +34,5 @@ export class LoginPage implements OnInit {
       this.password="";
     })
     }
+  
 }
