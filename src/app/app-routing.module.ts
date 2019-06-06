@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'datos', loadChildren: './componentes/datos/datos.module#DatosPageModule' },
   { path: 'registros', loadChildren: './componentes/registros/registros.module#RegistrosPageModule' },
   { path: 'ubicacion', loadChildren: './componentes/ubicacion/ubicacion.module#UbicacionPageModule' },  { path: 'menu-registros', loadChildren: './componentes/menu-registros/menu-registros.module#MenuRegistrosPageModule' },
+  { path: 'listado-datos', loadChildren: './componentes/listado-datos/listado-datos.module#ListadoDatosPageModule' },
 
 ];
 

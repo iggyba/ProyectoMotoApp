@@ -19,6 +19,6 @@ export class MenuRegistrosPage implements OnInit {
   }
 
   listarMotoTaxis(){
-    this.router.navigate(['/registros']);
+    this.router.navigate(['/listado-datos']);
   }
 }
