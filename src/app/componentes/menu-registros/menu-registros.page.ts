@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-menu-registros',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuRegistrosPage implements OnInit {
 
-  constructor() { }
+  constructor( public router : Router) { }
 
   ngOnInit() {
   }
 
+
+  registrarNuevoMotoTaxi(){
+    this.router.navigate(['/registros']);
+  }
+
+  listarMotoTaxis(){
+    this.router.navigate(['/registros']);
+  }
 }
