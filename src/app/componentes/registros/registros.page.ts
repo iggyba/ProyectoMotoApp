@@ -17,6 +17,8 @@ export class RegistrosPage implements OnInit {
   apellidoMotoTaxi:string;
   telefonoMotoTaxi:string;
   placaMotoTaxi:string;
+  carnetIdentidadMotoTaxi:string;
+  fechaNacimientoMotoTaxi:Date;
   email:string;
   password:string;
   imagenMotoTaxi:string;
@@ -32,7 +34,8 @@ export class RegistrosPage implements OnInit {
 
   registrando(){
     this.authService.registrarMotoTaxi(this.nombreMotoTaxi,this.apellidoMotoTaxi,this.telefonoMotoTaxi,
-    this.placaMotoTaxi,this.email,this.password,this.imagenMotoTaxi).then( res =>{ 
+    this.placaMotoTaxi,this.email,this.password,this.imagenMotoTaxi,
+    this.carnetIdentidadMotoTaxi,this.fechaNacimientoMotoTaxi).then( res =>{ 
       
     }).catch(err=> {alert("No se pudo registrar al moto taxista");
   })
@@ -44,10 +47,11 @@ export class RegistrosPage implements OnInit {
   this.placaMotoTaxi="";
   this.imagenMotoTaxi="";
   this.telefonoMotoTaxi="";
+  this.carnetIdentidadMotoTaxi="";
   }
 
   onUpload(e){
-    //this.authService.subirImagen(e);
+  
     const id = Math.random().toString(36).substring(2);
     
     const file = e.target.files[0];

@@ -33,7 +33,9 @@ export class AuthService {
   }
 
 
-  registrarMotoTaxi(nombre: string, apellido: string, telefono: string, placa: string, email: string, password: string, imagen: string) {
+  registrarMotoTaxi(nombre: string, apellido: string, telefono: string, placa: string, 
+    email: string, password: string, imagen: string,carnet:string,fechanacimiento:Date) {
+      
     return new Promise((resolve, reject) => {
       this.AFauth.auth.createUserWithEmailAndPassword(email, password).then(res => {
       const uid = res.user.uid;
@@ -43,6 +45,8 @@ export class AuthService {
         telefonoMotoTaxi: telefono,
         placaMotoTaxi: placa,
         imagenMotoTaxi:imagen,
+        carnetIdentidadMotoTaxi:carnet,
+        fechaNacimientoMotoTaxi:fechanacimiento,
         uid: uid
       })
       alert("Moto Taxista registrado con éxito");
