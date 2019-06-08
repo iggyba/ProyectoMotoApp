@@ -10,6 +10,8 @@ export interface motoTaxi{
   imagenMotoTaxi: string;
   telefonoMotoTaxi: string;
   placaMotoTaxi: string;
+  fechaNacimientoMotoTaxi: Date;
+  carnetIdentidadMotoTaxi: string;
   idMotoTaxi: string;
 }
 
