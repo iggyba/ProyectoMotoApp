@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../servicios/auth.service";
-import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from "@angular/fire/storage";
+import { AngularFireStorage } from "@angular/fire/storage";
 import { finalize } from "rxjs/operators";
 import { Observable } from "rxjs/internal/observable";
 import { map } from "rxjs/operators";
@@ -22,13 +22,10 @@ export class RegistrosPage implements OnInit {
   email:string;
   password:string;
   imagenMotoTaxi:string;
-  
 
   uploadPorcentage: Observable<number>;
   urlImagen: Observable<string>;
 
-  directoriofile: string;
-  archivo: any;
 
   constructor(private authService : AuthService, private AFStorage : AngularFireStorage) { }
 
@@ -42,10 +39,7 @@ export class RegistrosPage implements OnInit {
       
     }).catch(err=> {alert("No se pudo registrar al moto taxista");
   })
-    
-  //this.tarea.snapshotChanges().pipe(finalize(() => this.urlImagen = this.referencia.getDownloadURL())).subscribe();
 
-  const task = this.AFStorage.upload(this.directoriofile, this.archivo);
   this.nombreMotoTaxi="";
   this.password="";
   this.apellidoMotoTaxi="";
@@ -59,13 +53,18 @@ export class RegistrosPage implements OnInit {
   onUpload(e){
   
     const id = Math.random().toString(36).substring(2);
+    
     const file = e.target.files[0];
-    const filePath=`${this.nombreMotoTaxi}_${this.carnetIdentidadMotoTaxi}_profile_${id}`;
+    
+    const filePath=`profile_${id}`;
+    
     const ref = this.AFStorage.ref(filePath);
-    /*const task = this.AFStorage.upload(filePath, file);
-    task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();*/
-    this.archivo=file;
-    this.directoriofile=filePath;
-   
+    
+    const task = this.AFStorage.upload(filePath, file);
+    
+    this.uploadPorcentage=task.percentageChanges();
+
+    task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
+    
   }
 }
