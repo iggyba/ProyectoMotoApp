@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MototaxisService } from "../../servicios/mototaxis.service";
 
 @Component({
   selector: 'app-listado-datos',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoDatosPage implements OnInit {
 
-  constructor() { }
+  public motoTaxisArreglo: any = [];
+
+  constructor(public mototaxisService: MototaxisService) { }
 
   ngOnInit() {
+    this.mototaxisService.getDatosMotoTaxis().subscribe( motoTaxis =>{
+      this.motoTaxisArreglo=motoTaxis;
+    })
   }
 
 }
