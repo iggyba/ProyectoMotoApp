@@ -5,12 +5,18 @@ import { map } from "rxjs/operators";
 
 
 export interface motoTaxi{
-  nombreMotoTaxi: string;
-  apellidoMotoTaxi: string;
-  imagenMotoTaxi: string;
-  telefonoMotoTaxi: string;
-  placaMotoTaxi: string;
+  
   idMotoTaxi: string;
+  nombreMotoTaxi:string;
+  apellidoMotoTaxi:string;
+  telefonoMotoTaxi:string;
+  placaMotoTaxi:string;
+  carnetIdentidadMotoTaxi:string;
+  fechaNacimientoMotoTaxi:Date;
+  email:string;
+  password:string;
+  imagenMotoTaxi:string;
+  
 }
 
 @Injectable({

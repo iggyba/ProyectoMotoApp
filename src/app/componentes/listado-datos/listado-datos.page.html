@@ -1,51 +1,60 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>listadoDatos</ion-title>
+  <ion-toolbar class="new-background-color">
+    <ion-title text-center class="new-text-color">Listado de moto taxistas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <div *ngFor = 'let motoTaxi of motoTaxisArreglo'>
+    <div *ngFor='let motoTaxi of motoTaxisArreglo'>
       <ion-item>
-        <ion-img class="imagen" [src]="motoTaxisArreglo?.imagenMotoTaxi"></ion-img>
+        <ion-img class="imagen" [src]="motoTaxi?.imagenMotoTaxi"></ion-img>
       </ion-item>
       <ion-item>
         <ion-label>
           <h2><b>Nombre:</b></h2>
-          <h3>{{motoTaxisArreglo?.nombreMotoTaxi}}</h3>
+          <h3>{{motoTaxi?.nombreMotoTaxi}}</h3>
         </ion-label>
       </ion-item>
       <ion-item>
         <ion-label>
           <h2><b>Apellido:</b></h2>
-          <h3>{{motoTaxisArreglo?.apellidoMotoTaxi}}</h3>
+          <h3>{{motoTaxi?.apellidoMotoTaxi}}</h3>
         </ion-label>
       </ion-item>
       <ion-item>
         <ion-label>
           <h2><b>Carnet de identidad:</b></h2>
-          <h3>{{motoTaxisArreglo?.carnetIdentidadMotoTaxi}}</h3>
+          <h3>{{motoTaxi?.carnetIdentidadMotoTaxi}}</h3>
         </ion-label>
       </ion-item>
       <ion-item>
         <ion-label>
           <h2><b>Fecha de nacimiento:</b></h2>
-          <h3>{{motoTaxisArreglo?.fechaNacimientoMotoTaxi}}</h3>
+          <h3>{{motoTaxi?.fechaNacimientoMotoTaxi}}</h3>
         </ion-label>
       </ion-item>
       <ion-item>
         <ion-label>
           <h2><b>Teléfono/Celular:</b></h2>
-          <h3>{{motoTaxisArreglo?.telefonoMotoTaxi}}</h3>
+          <h3>{{motoTaxi?.telefonoMotoTaxi}}</h3>
         </ion-label>
       </ion-item>
       <ion-item>
         <ion-label>
           <h2><b>Número de placa:</b></h2>
-          <h3>{{motoTaxisArreglo?.placaMotoTaxi}}</h3>
+          <h3>{{motoTaxi?.placaMotoTaxi}}</h3>
         </ion-label>
       </ion-item>
+
+      <ion-row>
+        <ion-col width-50 style="text-align: right">
+          <ion-button expand="block" color="secondary">Modificar</ion-button>
+        </ion-col>
+        <ion-col width-50 style="text-align: left">
+          <ion-button expand="block" color="secondary">Eliminar</ion-button>
+        </ion-col>
+      </ion-row>
     </div>
   </ion-list>
 </ion-content>
