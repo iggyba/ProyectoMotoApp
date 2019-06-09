@@ -4,6 +4,7 @@ import { AngularFireStorage } from "@angular/fire/storage";
 import { finalize } from "rxjs/operators";
 import { Observable } from "rxjs/internal/observable";
 import { map } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-registros',
@@ -30,7 +31,7 @@ export class RegistrosPage implements OnInit {
   rutaArchivo: string;
 
 
-  constructor(private authService : AuthService, private AFStorage : AngularFireStorage) { }
+  constructor(private authService : AuthService, private AFStorage : AngularFireStorage, public router : Router) { }
 
   ngOnInit() {
   }
@@ -53,6 +54,9 @@ export class RegistrosPage implements OnInit {
   this.imagenMotoTaxi="";
   this.telefonoMotoTaxi="";
   this.carnetIdentidadMotoTaxi="";
+  this.urlImagen=null;
+  this.fechaNacimientoMotoTaxi=null;
+  this.router.navigate(['/menu-registros']);
   }
 
   onUpload(e){
@@ -64,6 +68,5 @@ export class RegistrosPage implements OnInit {
     const ref = this.AFStorage.ref(filePath);
     const task = this.AFStorage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
-    
   }
 }

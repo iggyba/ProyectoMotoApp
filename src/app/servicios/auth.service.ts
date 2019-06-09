@@ -54,4 +54,8 @@ export class AuthService {
     });
   }
 
+
+  eliminarMotoTaxi(id: string) {
+      
+  }
 }
