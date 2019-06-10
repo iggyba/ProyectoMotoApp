@@ -6,6 +6,7 @@ import { Observable } from "rxjs/internal/observable";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
 
+
 @Component({
   selector: 'app-registros',
   templateUrl: './registros.page.html',
@@ -31,7 +32,10 @@ export class RegistrosPage implements OnInit {
   rutaArchivo: string;
 
 
-  constructor(private authService : AuthService, private AFStorage : AngularFireStorage, public router : Router) { }
+  constructor(private authService : AuthService, 
+              private AFStorage : AngularFireStorage, 
+              public router : Router, 
+              ) { }
 
   ngOnInit() {
   }
@@ -69,4 +73,7 @@ export class RegistrosPage implements OnInit {
     const task = this.AFStorage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
   }
+
+
+ 
 }

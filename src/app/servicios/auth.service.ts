@@ -53,9 +53,4 @@ export class AuthService {
       }).catch(err => reject(err));
     });
   }
-
-
-  eliminarMotoTaxi(id: string) {
-      
-  }
 }

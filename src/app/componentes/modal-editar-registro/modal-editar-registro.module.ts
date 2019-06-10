@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ListadoDatosPage } from './listado-datos.page';
-import { ModalEditarRegistroPage } from '../modal-editar-registro/modal-editar-registro.page';
+import { ModalEditarRegistroPage } from './modal-editar-registro.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ListadoDatosPage
+    component: ModalEditarRegistroPage
   }
 ];
 
@@ -22,7 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ListadoDatosPage,ModalEditarRegistroPage],
-  entryComponents: [ModalEditarRegistroPage]
+  declarations: [ModalEditarRegistroPage]
 })
-export class ListadoDatosPageModule {}
+export class ModalEditarRegistroPageModule {}

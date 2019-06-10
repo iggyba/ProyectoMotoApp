@@ -7,8 +7,10 @@ const routes: Routes = [
   { path: 'login', loadChildren: './componentes/login/login.module#LoginPageModule' },
   { path: 'datos', loadChildren: './componentes/datos/datos.module#DatosPageModule' },
   { path: 'registros', loadChildren: './componentes/registros/registros.module#RegistrosPageModule' },
-  { path: 'ubicacion', loadChildren: './componentes/ubicacion/ubicacion.module#UbicacionPageModule' },  { path: 'menu-registros', loadChildren: './componentes/menu-registros/menu-registros.module#MenuRegistrosPageModule' },
+  { path: 'ubicacion', loadChildren: './componentes/ubicacion/ubicacion.module#UbicacionPageModule' },
+  { path: 'menu-registros', loadChildren: './componentes/menu-registros/menu-registros.module#MenuRegistrosPageModule' },
   { path: 'listado-datos', loadChildren: './componentes/listado-datos/listado-datos.module#ListadoDatosPageModule' },
+  { path: 'modal-editar-registro', loadChildren: './componentes/modal-editar-registro/modal-editar-registro.module#ModalEditarRegistroPageModule' },
 
 ];
 

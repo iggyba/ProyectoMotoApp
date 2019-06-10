@@ -44,4 +44,8 @@ export class MototaxisService {
         return data;
     }))
   }
+
+  eliminarMotoTaxi(id: string) {
+    this.db.collection('motoTaxis').doc(id).delete()
+  }
 }
