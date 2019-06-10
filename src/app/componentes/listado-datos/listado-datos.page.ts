@@ -46,10 +46,10 @@ export class ListadoDatosPage implements OnInit {
     await alert.present();
   }
 
-  async onOpenEditModal(){
+  async onOpenEditModal(mototaxi: motoTaxi){
     const modal = await this.modalCtrl.create({
       component: ModalEditarRegistroPage,
-      componentProps: { value: 123 }
+      componentProps: { value: mototaxi},
     });
     return await modal.present();
   }

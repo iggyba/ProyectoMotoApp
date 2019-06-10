@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ModalController, NavParams } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-modal-editar-registro',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalEditarRegistroPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController, private navParam: NavParams) { }
 
   ngOnInit() {
+    console.log(this.navParam.get('value'))
   }
 
+  onCloseModal(){
+   this.modalCtrl.dismiss();
+  }
 }

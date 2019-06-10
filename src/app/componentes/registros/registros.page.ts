@@ -60,7 +60,7 @@ export class RegistrosPage implements OnInit {
   this.carnetIdentidadMotoTaxi="";
   this.urlImagen=null;
   this.fechaNacimientoMotoTaxi=null;
-  this.router.navigate(['/menu-registros']);
+  
   }
 
   onUpload(e){
