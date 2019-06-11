@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'registros', loadChildren: './componentes/registros/registros.module#RegistrosPageModule' },
   { path: 'ubicacion', loadChildren: './componentes/ubicacion/ubicacion.module#UbicacionPageModule' },
   { path: 'second/:price', loadChildren: './second/second.module#SecondPageModule' },
+  { path: 'confir', loadChildren: './componentes/confir/confir.module#ConfirPageModule' },
 
 ];
 
@@ -19,4 +20,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
