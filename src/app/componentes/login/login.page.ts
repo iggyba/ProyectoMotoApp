@@ -12,6 +12,11 @@ import { Router } from "@angular/router";
 })
 export class LoginPage implements OnInit {
 
+//=============================================================================================
+  passwordType: string='password';
+  passwordShown:boolean=false;
+//=============================================================================================
+
   constructor(private auhtService: AuthService, public router : Router) { }
 
   email : string;
@@ -32,5 +37,19 @@ export class LoginPage implements OnInit {
       this.email="";
       this.password="";
     })
+  }
+
+//=============================================================================================
+  public verPassword(){
+    if(this.passwordShown){
+      this.passwordShown=false;
+      this.passwordType='password';
+    }else{
+      this.passwordShown=true;
+      this.passwordType='text';
     }
+  }
+//=============================================================================================
+
+
 }
