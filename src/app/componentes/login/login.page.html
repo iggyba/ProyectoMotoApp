@@ -11,13 +11,13 @@
   <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
 </ion-item>
 
-
+<!--ojito=====================-->
 <ion-item>
  <ion-label position="floating">Contraseña </ion-label>
  <ion-input  [type]="passwordType" [(ngModel)]="password" name="password"></ion-input>     
  <ion-icon  name="eye" [color]="passwordShown === true ? 'dark' : 'medium'" (click)="verPassword()" slot="end" ></ion-icon>
 </ion-item>
-
+<!--ojito=====================-->
 
 <br>
 <ion-button (click)="logear()" expand="block">Ingresar</ion-button>
