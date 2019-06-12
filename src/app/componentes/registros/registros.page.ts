@@ -25,7 +25,6 @@ export class RegistrosPage implements OnInit {
   password:string;
   imagenMotoTaxi:string;
 
-  uploadPorcentage: Observable<number>;
   urlImagen: Observable<string>;
 
   archivo: any;

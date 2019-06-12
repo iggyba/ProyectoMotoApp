@@ -3,6 +3,8 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { reject } from 'q';
 import { auth } from 'firebase';
 import { AngularFirestore } from "@angular/fire/firestore";
+import { Router } from "@angular/router";
+
 
 
 
@@ -14,7 +16,9 @@ export class AuthService {
   public idUsuario: string;
 
 
-  constructor(private AFauth: AngularFireAuth, private db: AngularFirestore) { }
+  constructor(private AFauth: AngularFireAuth, 
+              private db: AngularFirestore,
+              public router : Router) { }
 
   login(email: string, password: string) {
 
@@ -52,5 +56,11 @@ export class AuthService {
       alert("Moto Taxista registrado con éxito");
       }).catch(err => reject(err));
     });
+  }
+
+  logout(){
+    this.AFauth.auth.signOut().then(() =>{
+      this.router.navigate(['/login']);
+    })
   }
 }
