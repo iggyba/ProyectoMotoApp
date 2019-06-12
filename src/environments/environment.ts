@@ -7,13 +7,13 @@ export const environment = {
 };
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyAwPVADwAe4kocvRPw5JIMZV_qGoaIeM00",
-  authDomain: "chachasmotos.firebaseapp.com",
-  databaseURL: "https://chachasmotos.firebaseio.com",
-  projectId: "chachasmotos",
-  storageBucket: "chachasmotos.appspot.com",
-  messagingSenderId: "605621181338",
-  appId: "1:605621181338:web:e5851b96745d3d70"
+  apiKey: "AIzaSyDsWYvgrcrMLaHIVzLzg3jZb8ooa1v1Ulk",
+  authDomain: "regicon-23f23.firebaseapp.com",
+  databaseURL: "https://regicon-23f23.firebaseio.com",
+  projectId: "regicon-23f23",
+  storageBucket: "regicon-23f23.appspot.com",
+  messagingSenderId: "173233038092",
+  appId: "1:173233038092:web:6bf3e95d64912393"
 };
 
 /*
