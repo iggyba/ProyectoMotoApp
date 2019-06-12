@@ -41,7 +41,7 @@
     <input type="file" id="fichero-tarifas" class="input-file" accept=".png, .jpg" (change)="onUpload($event)" value="">
     Subir nueva Imagen...
     </div>
-  <ion-input type="hidden" [value]="urlImagen | async" [(ngModel)]="imagenMotoTaxi"></ion-input>
+  <ion-input  [value]="urlImagen | async" [(ngModel)]="imagenMotoTaxi"></ion-input>
   <br>
   <ion-button (click)="modificando()" expand="block" color="secondary">Modificar</ion-button>
 </ion-content>

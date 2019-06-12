@@ -53,6 +53,7 @@ export class AuthService {
         fechaNacimientoMotoTaxi:fechanacimiento,
         uid: uid
       })
+      this.router.navigate(['/menu-registros']);
       alert("Moto Taxista registrado con éxito");
       }).catch(err => reject(err));
     });
