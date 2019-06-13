@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
   logear(){
      
      this.auhtService.login(this.email,this.password).then( res =>{
-     this.router.navigate(['/datos']);
+     this.router.navigate(['/dashboard']);
      this.email="";
      this.password="";
      

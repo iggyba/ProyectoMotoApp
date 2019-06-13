@@ -3,12 +3,12 @@ import { NavController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx'
 import { HomePageModule } from 'src/app/home/home.module';
 
-import { position } from "../../model/position";
+import { position } from "../../../model/position";
 import { NavParams, ModalController } from "@ionic/angular";
-import { UbicacionService } from '../../servicios/ubicacion.service'
+import { UbicacionService } from '../../../servicios/ubicacion.service'
 import { error } from '@angular/compiler/src/util';
 import { AngularFirestore } from '@angular/fire/firestore'
-import { AuthService } from "../../servicios/auth.service";
+import { AuthService } from "../../../servicios/auth.service";
 
 @Component({
   selector: 'app-ubicacion',

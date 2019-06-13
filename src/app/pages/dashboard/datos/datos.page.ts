@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MototaxisService, motoTaxi } from "../../servicios/mototaxis.service";
+import { MototaxisService, motoTaxi } from "../../../servicios/mototaxis.service";
 import { Router } from "@angular/router";
 
-import { AuthService } from "../../servicios/auth.service";
+import { AuthService } from "../../../servicios/auth.service";
 
 @Component({
   selector: 'app-datos',
