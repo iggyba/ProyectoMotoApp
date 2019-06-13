@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MototaxisService, motoTaxi } from "../../servicios/mototaxis.service";
 import { Router } from "@angular/router";
-
 import { AuthService } from "../../servicios/auth.service";
 import { AlertController } from '@ionic/angular';
+import { isNullOrUndefined } from 'util';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-datos',
@@ -13,23 +15,24 @@ import { AlertController } from '@ionic/angular';
 export class DatosPage implements OnInit {
 
   public motoTaxisArreglo: motoTaxi;
+  public idUsuario: string;
 
-  constructor(public mototaxisService : MototaxisService, 
-              public router : Router, 
-              public auth: AuthService,
-              public alertCtrl : AlertController) { }
+  constructor(public mototaxisService: MototaxisService,
+    public router: Router,
+    public auth: AuthService,
+    public alertCtrl: AlertController) { }
 
   ngOnInit() {
-      this.mototaxisService.getMototaxiUsuario(this.auth.getUidUser()).subscribe(motoTaxis =>{
-      this.motoTaxisArreglo=motoTaxis;
-      })
+      this.mototaxisService.getMototaxiUsuario(this.auth.getUidUser()).subscribe(motoTaxis => {
+      this.motoTaxisArreglo = motoTaxis;
+    })
   }
 
-  conectar(){
+  conectar() {
     this.router.navigate(['/ubicacion']);
   }
 
-  async desconectar(){
+  async desconectar() {
     const alert = await this.alertCtrl.create({
       header: 'Salir de sesión',
       message: `¿Estás seguro de que deseas salir de sesión ${this.motoTaxisArreglo.nombreMotoTaxi}`,
@@ -51,7 +54,7 @@ export class DatosPage implements OnInit {
       ]
     });
     await alert.present();
-    
+
   }
- 
+
 }

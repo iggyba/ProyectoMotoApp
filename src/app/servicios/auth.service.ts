@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
 
-  public idUsuario: string;
+  public  idUsuario: string;
 
 
   constructor(private AFauth: AngularFireAuth, 
@@ -24,7 +24,9 @@ export class AuthService {
 
     return new Promise((resolve, reject) => {
       this.AFauth.auth.signInWithEmailAndPassword(email, password).then(usuario => {
+        
         this.idUsuario = usuario.user.uid;
+       
         resolve(usuario.user.uid);
       }).catch(err => reject(err));
     });
@@ -61,7 +63,7 @@ export class AuthService {
 
   logout(){
     this.AFauth.auth.signOut().then(() =>{
-      this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
     })
   }
 }
