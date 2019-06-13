@@ -63,4 +63,18 @@ export class MototaxisService {
       imagenMotoTaxi: imagenMotoTaxiM
     })
   }
+
+  cambiarDisponibilidadTrue(idMotoTaxi:string){
+    this.db.collection('motoTaxis').doc(idMotoTaxi).update({
+      disponible: true
+    })
+    alert("Disponible");
+  }
+
+  cambiarDisponibilidadFalse(idMotoTaxi:string){
+    this.db.collection('motoTaxis').doc(idMotoTaxi).update({
+      disponible: false
+    })
+    alert("No Disponible");
+  }
 }

@@ -53,6 +53,7 @@ export class AuthService {
         imagenMotoTaxi:imagen,
         carnetIdentidadMotoTaxi:carnet,
         fechaNacimientoMotoTaxi:fechanacimiento,
+        disponible: false,
         uid: uid
       })
       this.router.navigate(['/menu-registros']);
