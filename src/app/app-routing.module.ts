@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'menu-registros', loadChildren: './componentes/menu-registros/menu-registros.module#MenuRegistrosPageModule' },
   { path: 'listado-datos', loadChildren: './componentes/listado-datos/listado-datos.module#ListadoDatosPageModule' },
   { path: 'modal-editar-registro', loadChildren: './componentes/modal-editar-registro/modal-editar-registro.module#ModalEditarRegistroPageModule', canActivate: [GuardauthGuard] },
+<<<<<<< HEAD
   { path: 'menumetamorfo', loadChildren: './componentes/menumetamorfo/menumetamorfo.module#MenumetamorfoPageModule' },
   { path: 'menumetamorfo2', loadChildren: './componentes/menumetamorfo2/menumetamorfo2.module#Menumetamorfo2PageModule' },
 
@@ -30,3 +31,16 @@ export class AppRoutingModule { }
 
 
 
+=======
+
+];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+>>>>>>> parent of 2c25218... Segundo parcial agregando menus y funcionalidades
