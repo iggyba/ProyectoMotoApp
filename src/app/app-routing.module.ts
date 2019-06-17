@@ -12,9 +12,6 @@ const routes: Routes = [
   { path: 'menu-registros', loadChildren: './componentes/menu-registros/menu-registros.module#MenuRegistrosPageModule' },
   { path: 'listado-datos', loadChildren: './componentes/listado-datos/listado-datos.module#ListadoDatosPageModule' },
   { path: 'modal-editar-registro', loadChildren: './componentes/modal-editar-registro/modal-editar-registro.module#ModalEditarRegistroPageModule', canActivate: [GuardauthGuard] },
-  { path: 'menumetamorfo', loadChildren: './componentes/menumetamorfo/menumetamorfo.module#MenumetamorfoPageModule' },
-  { path: 'modal1', loadChildren: './componetes/modal1/modal1.module#Modal1PageModule' },
-  { path: 'menumetamorfo2', loadChildren: './componentes/menumetamorfo2/menumetamorfo2.module#Menumetamorfo2PageModule' },
 
 ];
 
