@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx'
 import { HomePageModule } from 'src/app/home/home.module';
-
 import { position } from "../../model/position";
 import { NavParams, ModalController } from "@ionic/angular";
 import { UbicacionService } from '../../servicios/ubicacion.service'
