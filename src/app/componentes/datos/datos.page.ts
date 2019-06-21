@@ -23,6 +23,10 @@ export class DatosPage implements OnInit {
     public alertCtrl: AlertController) { }
 
   ngOnInit() {
+<<<<<<< HEAD
+=======
+      this.mototaxisService.cambiarDisponibilidadTrue(this.auth.getUidUser());
+>>>>>>> parent of a28e4c6... borrando
       this.mototaxisService.getMototaxiUsuario(this.auth.getUidUser()).subscribe(motoTaxis => {
       this.motoTaxisArreglo = motoTaxis;
     })
@@ -42,13 +46,21 @@ export class DatosPage implements OnInit {
           role: 'cancelar',
           cssClass: 'secondary',
           handler: (blah) => {
+<<<<<<< HEAD
             console.log('Confirmación Cancelada: blah');
+=======
+            console.log('Confirmación Cancelada');
+>>>>>>> parent of a28e4c6... borrando
           }
         }, {
           text: 'Confirmar',
           handler: () => {
             console.log('Confirmar');
             this.auth.logout();
+<<<<<<< HEAD
+=======
+            this.mototaxisService.cambiarDisponibilidadFalse(this.auth.getUidUser());
+>>>>>>> parent of a28e4c6... borrando
           }
         }
       ]

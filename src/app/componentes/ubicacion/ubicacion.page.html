@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color ="tertiary">
+    <ion-title>Ubicacion en Tiempo Real</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Enviar Ubicación a Central</ion-label>
+    <ion-toggle color="tertiary" [(ngModel)]="isToggled" (ionChange)="MandarUbicacion(isToggled)"></ion-toggle>
+  </ion-item>
+ <ion-card *ngIf="isToggled" padding >
+   
+  <p>Latitud: {{lat}}</p>
+  <p>Longitud: {{lng}}</p>
+
+ </ion-card>
+ <ion-button (click)='pruebaUbic()'></ion-button>
+</ion-content>
