@@ -1,7 +1,0 @@
-{
-  "name": "geo",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
