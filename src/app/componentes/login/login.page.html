@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-title text-center class="new-text-color">Iniciar sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <img class="icon" src="assets/icon/icon.png" alt="">
+<ion-item>
+  <ion-label position="floating">Email</ion-label>
+  <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
+</ion-item>
+
+
+<ion-item>
+ <ion-label position="floating">Contraseña </ion-label>
+ <ion-input  [type]="passwordType" [(ngModel)]="password" name="password"></ion-input>     
+ <ion-icon  name="eye" [color]="passwordShown === true ? 'dark' : 'medium'" (click)="verPassword()" slot="end" ></ion-icon>
+</ion-item>
+
+
+<br>
+<ion-button (click)="logear()" expand="block">Ingresar</ion-button>
+</ion-content>
