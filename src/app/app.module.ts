@@ -17,6 +17,8 @@ import { AngularFirestoreModule, FirestoreSettingsToken, AngularFirestoreDocumen
 
 import { FCM } from '@ionic-native/fcm/ngx';
 
+import { BackgroundMode } from '@ionic-native/background-mode/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -31,6 +33,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
     SplashScreen,
     Geolocation,
     FCM,
+    BackgroundMode,
     
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  },
     { provide: FirestoreSettingsToken, useValue: {}}
