@@ -63,8 +63,6 @@ export class MototaxisService {
       imagenMotoTaxi: imagenMotoTaxiM
     })
   }
-<<<<<<< HEAD
-=======
 
   cambiarDisponibilidadTrue(idMotoTaxi:string){
     this.db.collection('motoTaxis').doc(idMotoTaxi).update({
@@ -79,5 +77,4 @@ export class MototaxisService {
     })
     alert("No Disponible");
   }
->>>>>>> parent of a28e4c6... borrando
 }
