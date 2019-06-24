@@ -12,10 +12,15 @@ import { Router } from "@angular/router";
 })
 export class LoginPage implements OnInit {
 
-  constructor(private auhtService: AuthService, public router : Router) { }
 
-  email : string;
-  password : string;
+
+
+  constructor(private auhtService: AuthService, public router: Router) { }
+
+  email: string;
+  password: string;
+  passwordType: string = 'password';
+  passwordShown: boolean = false;
 
   ngOnInit() {
   }
@@ -29,8 +34,22 @@ export class LoginPage implements OnInit {
      
     }).catch(err => {
       alert("Los datos introducidos fueron incorrectos");
-      this.email="";
-      this.password="";
+      this.email = "";
+      this.password = "";
     })
+  }
+
+  
+  public verPassword() {
+    if (this.passwordShown) {
+      this.passwordShown = false;
+      this.passwordType = 'password';
+    } else {
+      this.passwordShown = true;
+      this.passwordType = 'text';
     }
+  }
+ 
+
+
 }

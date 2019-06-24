@@ -3,7 +3,10 @@ import { AuthService } from "../../servicios/auth.service";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { finalize } from "rxjs/operators";
 import { Observable } from "rxjs/internal/observable";
-import { map } from "rxjs/operators";
+import { Router } from "@angular/router";
+import { FotosService } from "../../servicios/fotos.service";
+
+
 
 @Component({
   selector: 'app-registros',
@@ -17,23 +20,34 @@ export class RegistrosPage implements OnInit {
   apellidoMotoTaxi:string;
   telefonoMotoTaxi:string;
   placaMotoTaxi:string;
+  carnetIdentidadMotoTaxi:string;
+  fechaNacimientoMotoTaxi:Date;
   email:string;
   password:string;
   imagenMotoTaxi:string;
 
-  uploadPorcentage: Observable<number>;
   urlImagen: Observable<string>;
 
+  archivo: any;
+  rutaArchivo: string;
+  image: any;
 
-  constructor(private authService : AuthService, private AFStorage : AngularFireStorage) { }
+  constructor(private authService : AuthService, 
+              private AFStorage : AngularFireStorage, 
+              public router : Router,
+              private fotosService: FotosService
+              ) { }
 
   ngOnInit() {
   }
 
   registrando(){
     this.authService.registrarMotoTaxi(this.nombreMotoTaxi,this.apellidoMotoTaxi,this.telefonoMotoTaxi,
-    this.placaMotoTaxi,this.email,this.password,this.imagenMotoTaxi).then( res =>{ 
+    this.placaMotoTaxi,this.email,this.password,this.imagenMotoTaxi,
+    this.carnetIdentidadMotoTaxi,this.fechaNacimientoMotoTaxi).then( res =>{ 
+    
       
+
     }).catch(err=> {alert("No se pudo registrar al moto taxista");
   })
 
@@ -44,23 +58,31 @@ export class RegistrosPage implements OnInit {
   this.placaMotoTaxi="";
   this.imagenMotoTaxi="";
   this.telefonoMotoTaxi="";
+  this.carnetIdentidadMotoTaxi="";
+  this.urlImagen=null;
+  this.fechaNacimientoMotoTaxi=null;
+  
   }
 
   onUpload(e){
-    //this.authService.subirImagen(e);
+  
     const id = Math.random().toString(36).substring(2);
-    
     const file = e.target.files[0];
-    
+    this.archivo = file;
     const filePath=`profile_${id}`;
-    
     const ref = this.AFStorage.ref(filePath);
-    
     const task = this.AFStorage.upload(filePath, file);
-    
-    this.uploadPorcentage=task.percentageChanges();
-
     task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
-    
   }
+
+  tomarFoto(){
+   this.fotosService.takePicture().then( imagen =>{
+     console.log(imagen);
+    this.image=imagen;
+    this.fotosService.makeFileIntoBlob(imagen);
+  }, (err) =>
+  {
+    console.log(err);
+  })
+}
 }

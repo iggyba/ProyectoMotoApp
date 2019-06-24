@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -16,6 +15,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule, FirestoreSettingsToken, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 import { FCM } from '@ionic-native/fcm/ngx';
+import { AngularFireStorageModule } from "@angular/fire/storage";
+import { Camera } from "@ionic-native/camera/ngx";
+import { WebView } from "@ionic-native/ionic-webview/ngx";
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +34,9 @@ import { FCM } from '@ionic-native/fcm/ngx';
     SplashScreen,
     Geolocation,
     FCM,
-    
+    Camera,
+    WebView,
+    File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  },
     { provide: FirestoreSettingsToken, useValue: {}}
   ],

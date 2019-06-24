@@ -21,7 +21,7 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  initializeApp() {
+   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
@@ -45,4 +45,5 @@ export class AppComponent {
     this.fcm.subscribeToTopic('people');
     this.fcm.unsubscribeFromTopic('marketing');
   }
+
 }

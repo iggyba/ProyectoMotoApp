@@ -45,7 +45,6 @@ export class UbicacionPage implements OnInit {
           Latitud: data.coords.latitude,
           Longitud: data.coords.longitude,
         }
-        
        this.ubicacionService.sndUbicAFireBase(loc,this.auth.getUidUser());
       });
     } 

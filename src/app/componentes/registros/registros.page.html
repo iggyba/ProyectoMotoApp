@@ -7,31 +7,39 @@
 <ion-content padding>
   <img class="icon" src="assets/icon/icon.png" alt="">
   <ion-item>
-    <ion-label position="floating">nombre </ion-label>
-    <ion-input type="text"  [(ngModel)]="nombreMotoTaxi" name="nombreMotoTaxi"></ion-input>
+    <ion-label position="floating">Nombre </ion-label>
+    <ion-input type="text"  [(ngModel)]="nombreMotoTaxi" name="nombreMotoTaxi" onkeyup="javascript:this.value=this.value.toUpperCase();"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">apellido </ion-label>
-    <ion-input type="text"  [(ngModel)]="apellidoMotoTaxi" name="apellidoMotoTaxi"></ion-input>
+    <ion-label position="floating">Apellido </ion-label>
+    <ion-input type="text"  [(ngModel)]="apellidoMotoTaxi" name="apellidoMotoTaxi" onkeyup="javascript:this.value=this.value.toUpperCase();"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">teléfono </ion-label>
-    <ion-input type="text"  [(ngModel)]="telefonoMotoTaxi" name="telefonoMotoTaxi"></ion-input>
+    <ion-label position="floating">Carnet de Identidad</ion-label>
+    <ion-input type="number"  [(ngModel)]="carnetIdentidadMotoTaxi" name="carnetIdentidadMotoTaxi"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">placa del vehículo </ion-label>
+    <ion-label position="floating">Fecha de Nacimiento</ion-label>
+    <ion-datetime display-format="D/MM/YYYY" picker-format="D MM YYYY" [(ngModel)]="fechaNacimientoMotoTaxi" name="fechaNacimientoMotoTaxi"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Teléfono/Celular </ion-label>
+    <ion-input type="number"  [(ngModel)]="telefonoMotoTaxi" name="telefonoMotoTaxi"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Placa del Vehículo </ion-label>
     <ion-input type="text"  [(ngModel)]="placaMotoTaxi" name="placaMotoTaxi"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">email </ion-label>
+    <ion-label position="floating">Email </ion-label>
     <ion-input type="text"  [(ngModel)]="email" name="email"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">contraseña </ion-label>
+    <ion-label position="floating">Contraseña </ion-label>
     <ion-input type="password"  [(ngModel)]="password" name="password"></ion-input>
   </ion-item>
   <br>
-    <ion-label>Seleccionar imagen:</ion-label>
+    <ion-label>Seleccionar Imagen:</ion-label>
 
     <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
       <input type="file" id="fichero-tarifas" class="input-file" accept=".png, .jpg" (change)="onUpload($event)" value="">
@@ -44,5 +52,9 @@
 
   <ng-template #registarDisabled>
     <ion-button (click)="registrando()" expand="block" color="secondary" disabled="true">Registrar</ion-button>
-  </ng-template>
+  </ng-template> 
+
+  <ion-button (click)="tomarFoto()">Tomar foto</ion-button>
+  <br>
+  <img *ngIf="image" [src]="image" alt="image">
 </ion-content>
