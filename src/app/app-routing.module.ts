@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { GuardauthGuard } from "./servicios/guardauth.guard";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'menu-registros', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [GuardauthGuard] },
   { path: 'login', loadChildren: './componentes/login/login.module#LoginPageModule' },
   { path: 'datos', loadChildren: './componentes/datos/datos.module#DatosPageModule', canActivate: [GuardauthGuard] },

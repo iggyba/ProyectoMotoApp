@@ -3,8 +3,9 @@ import { AuthService } from "../../servicios/auth.service";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { finalize } from "rxjs/operators";
 import { Observable } from "rxjs/internal/observable";
-import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
+import { FotosService } from "../../servicios/fotos.service";
+
 
 
 @Component({
@@ -29,11 +30,12 @@ export class RegistrosPage implements OnInit {
 
   archivo: any;
   rutaArchivo: string;
-
+  image: any;
 
   constructor(private authService : AuthService, 
               private AFStorage : AngularFireStorage, 
-              public router : Router, 
+              public router : Router,
+              private fotosService: FotosService
               ) { }
 
   ngOnInit() {
@@ -73,6 +75,14 @@ export class RegistrosPage implements OnInit {
     task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
   }
 
-
- 
+  tomarFoto(){
+   this.fotosService.takePicture().then( imagen =>{
+     console.log(imagen);
+    this.image=imagen;
+    this.fotosService.makeFileIntoBlob(imagen);
+  }, (err) =>
+  {
+    console.log(err);
+  })
+}
 }

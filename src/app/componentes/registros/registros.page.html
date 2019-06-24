@@ -53,4 +53,8 @@
   <ng-template #registarDisabled>
     <ion-button (click)="registrando()" expand="block" color="secondary" disabled="true">Registrar</ion-button>
   </ng-template> 
+
+  <ion-button (click)="tomarFoto()">Tomar foto</ion-button>
+  <br>
+  <img *ngIf="image" [src]="image" alt="image">
 </ion-content>
