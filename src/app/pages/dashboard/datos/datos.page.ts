@@ -28,5 +28,8 @@ export class DatosPage implements OnInit {
     this.router.navigate(['/ubicacion']);
   }
 
- 
+  desconectar(){
+    this.mototaxisService.cambiarDisponibilidadFalse(this.motoTaxisArreglo.idMotoTaxi);
+    this.router.navigate(['/login']);
+  }
 }

@@ -4,7 +4,7 @@ import { reject } from 'q';
 import { auth } from 'firebase';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
-
+import { MototaxisService} from "../servicios/mototaxis.service";
 
 
 
@@ -18,7 +18,8 @@ export class AuthService {
 
   constructor(private AFauth: AngularFireAuth, 
               private db: AngularFirestore,
-              public router : Router) { }
+              public router : Router,
+              public mototaxisService : MototaxisService) { }
 
   login(email: string, password: string) {
 
@@ -26,7 +27,7 @@ export class AuthService {
       this.AFauth.auth.signInWithEmailAndPassword(email, password).then(usuario => {
         
         this.idUsuario = usuario.user.uid;
-       
+        this.mototaxisService.cambiarDisponibilidadTrue(this.idUsuario);
         resolve(usuario.user.uid);
       }).catch(err => reject(err));
     });
