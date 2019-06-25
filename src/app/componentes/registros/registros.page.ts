@@ -5,6 +5,10 @@ import { finalize } from "rxjs/operators";
 import { Observable } from "rxjs/internal/observable";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
+import { from } from 'rxjs';
+import {FormBuilder,FormGroup,Validator, Validators}from '@angular/forms';
+import {AlertController} from '@ionic/angular';
+import { NavController,  } from '@ionic/angular'
 
 
 @Component({
@@ -13,7 +17,6 @@ import { Router } from "@angular/router";
   styleUrls: ['./registros.page.scss'],
 })
 export class RegistrosPage implements OnInit {
-
 
   nombreMotoTaxi:string;
   apellidoMotoTaxi:string;
@@ -32,24 +35,37 @@ export class RegistrosPage implements OnInit {
   rutaArchivo: string;
 
 
+
+
+  myModelo: any;
+
   constructor(private authService : AuthService, 
               private AFStorage : AngularFireStorage, 
               public router : Router, 
-              ) { }
-
-  ngOnInit() {
-  }
+              public navCtrl:   NavController,
+              public alertCtrl: AlertController
+              
+              ) {
+                this.myModelo = {}; 
+               }
+              
+               ionViewDidLoad(){ }       
+               
+               
+   ngOnInit() { }
 
   registrando(){
-    this.authService.registrarMotoTaxi(this.nombreMotoTaxi,this.apellidoMotoTaxi,this.telefonoMotoTaxi,
-    this.placaMotoTaxi,this.email,this.password,this.imagenMotoTaxi,
-    this.carnetIdentidadMotoTaxi,this.fechaNacimientoMotoTaxi).then( res =>{ 
     
-      
 
-    }).catch(err=> {alert("No se pudo registrar al moto taxista");
-  })
-
+      this.authService.registrarMotoTaxi(this.nombreMotoTaxi,this.apellidoMotoTaxi,this.telefonoMotoTaxi,
+        this.placaMotoTaxi,this.email,this.password,this.imagenMotoTaxi,
+        this.carnetIdentidadMotoTaxi,this.fechaNacimientoMotoTaxi).then( res =>{ 
+        
+        }).catch(err=> {alert("No se pudo registrar al moto taxista"); })
+    
+    
+    
+    
   this.nombreMotoTaxi="";
   this.password="";
   this.apellidoMotoTaxi="";
@@ -61,6 +77,7 @@ export class RegistrosPage implements OnInit {
   this.urlImagen=null;
   this.fechaNacimientoMotoTaxi=null;
   this.router.navigate(['/menu-registros']);
+  
   }
 
   onUpload(e){
@@ -75,5 +92,24 @@ export class RegistrosPage implements OnInit {
   }
 
 
+
+
+ /* buildForm(){
+    this.formularioUsuario = this.fb.group({
+      nombreMotoTaxi:['',[Validators.required,Validators.maxLength(30)]],
+      apellidoMotoTaxi:['',[Validators.required,Validators.maxLength(30)]],
+      carnetIdentidadMotoTaxi:['',[Validators.required,Validators.maxLength(10)]],
+      fechaNacimientoMotoTaxi:['',[Validators.required,Validators.maxLength(6)]],
+      telefonoMotoTaxi:['',[Validators.required,Validators.maxLength(8)]],
+      placaMotoTaxi:['',[Validators.required,Validators.maxLength(10)]],
+      correo:['',[Validators.required,Validators.email]],
+      password:['',[Validators.required]],
+      
+    });*/
+  }
+
+
+
+
  
-}
+

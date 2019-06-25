@@ -17,11 +17,16 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { FormsModule } from "@angular/forms";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 
+
+import { CustomFormsModule } from 'ng2-validation'
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, 
-  AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule,AngularFireStorageModule,AngularFireAuthModule],
+  AngularFireModule.initializeApp(firebaseConfig), AngularFirestoreModule,
+  AngularFireStorageModule,AngularFireAuthModule,
+  FormsModule, CustomFormsModule],
   providers: [
     StatusBar,
     SplashScreen, 

@@ -5,54 +5,182 @@
 </ion-header>
 
 <ion-content padding>
+  <!--55555555555555555555555555555555555555555555555555-->
+  <form novalidate>
+
     <img class="icon" src="assets/icon/icon.png" alt="">
+
+
     <ion-item>
-      <ion-label position="floating">nombre </ion-label>
-      <ion-input type="text"  [(ngModel)]="nombreMotoTaxi" name="nombreMotoTaxi" onkeyup="javascript:this.value=this.value.toUpperCase();" required></ion-input>
+      <ion-label position="floating">Nombre </ion-label>
+      <ion-input type="text" [(ngModel)]="myModelo.nombreMotoTaxi" name="nombreMotoTaxi" #nombreMotoTaxi="ngModel"
+        placeholder="Nombre" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+      </ion-input>
     </ion-item>
+    <div  class="form-error" *ngIf="nombreMotoTaxi.errors && (nombreMotoTaxi.dirty || nombreMotoTaxi.touched)">
+      <p style="font-size:15px;color:#f04141" [hidden]="!nombreMotoTaxi.errors.required">Nombre obligatorio</p>
+    </div>
+
+
     <ion-item>
-      <ion-label position="floating">apellido </ion-label>
-      <ion-input type="text"  [(ngModel)]="apellidoMotoTaxi" name="apellidoMotoTaxi" onkeyup="javascript:this.value=this.value.toUpperCase();" required></ion-input>
+      <ion-label position="floating">Apellido </ion-label>
+      <ion-input type="text" 
+      [(ngModel)]="myModelo.apellidoMotoTaxi" 
+      #apellidoMotoTaxi="ngModel" 
+      name="apellidoMotoTaxi"
+      placeholder="Apellido"  
+      onkeyup="javascript:this.value=this.value.toUpperCase();" 
+      required>
+      </ion-input>
     </ion-item>
+    <div class="form-error" *ngIf="apellidoMotoTaxi.errors && (apellidoMotoTaxi.dirty || apellidoMotoTaxi.touched)">
+      <p style="font-size:15px;color:#f04141" [hidden]="!apellidoMotoTaxi.errors.required">Apellido obligatorio</p>
+    </div>
+
+
+
     <ion-item>
-      <ion-label position="floating">carnet de identidad</ion-label>
-      <ion-input type="text"  [(ngModel)]="carnetIdentidadMotoTaxi" name="carnetIdentidadMotoTaxi" required></ion-input>
+      <ion-label position="floating">Carnet de identidad</ion-label>
+      <ion-input 
+      type="text" 
+      [(ngModel)]="myModelo.carnetIdentidadMotoTaxi" 
+      name="carnetIdentidadMotoTaxi"
+      #carnetIdentidadMotoTaxi="ngModel"
+      onkeyup="javascript:this.value=this.value.toUpperCase();"
+      placeholder="1234567"
+      maxlength="7"
+      required>
+      </ion-input>
     </ion-item>
+    <div class="form-error" *ngIf="carnetIdentidadMotoTaxi.errors && (carnetIdentidadMotoTaxi.dirty || carnetIdentidadMotoTaxi.touched)">
+      <p style="font-size:15px;color:#f04141" [hidden]="!carnetIdentidadMotoTaxi.errors.required">Carnet obligatorio.</p>
+      <p style="font-size:15px;color:#f04141" [hidden]="!carnetIdentidadMotoTaxi.errors.maxlength">Numero de caract.</p>
+    </div>
+
+
     <ion-item>
-      <ion-label position="floating">fecha de nacimiento</ion-label>
-    <!--  <ion-input type="text"  [(ngModel)]="fechaNacimientoMotoTaxi" name="fechaNacimientoMotoTaxi"></ion-input> -->
-      <ion-datetime display-format="D/MM/YYYY" picker-format="MM D YYYY" [(ngModel)]="fechaNacimientoMotoTaxi" name="fechaNacimientoMotoTaxi" required></ion-datetime>
+      <ion-label position="floating">Fecha de nacimiento</ion-label>
+      <!--  <ion-input type="text"  [(ngModel)]="fechaNacimientoMotoTaxi" name="fechaNacimientoMotoTaxi"></ion-input> -->
+      <ion-datetime 
+      display-format="D/MM/YYYY" 
+      picker-format="MM D YYYY" 
+      [(ngModel)]="myModelo.fechaNacimientoMotoTaxi"
+      name="fechaNacimientoMotoTaxi"
+      #fechaNacimientoMotoTaxi="ngModel"
+      placeholder="Seleccione una fecha"
+      required>
+      </ion-datetime>
     </ion-item>
+    <div class="form-error" *ngIf="fechaNacimientoMotoTaxi.errors && (fechaNacimientoMotoTaxi.dirty || fechaNacimientoMotoTaxi.touched)">
+      <p style="font-size:15px;color:#f04141" [hidden]="!fechaNacimientoMotoTaxi.errors.required">Fecha de registro</p>
+    </div>
+
+
     <ion-item>
-      <ion-label position="floating">teléfono/celular </ion-label>
-      <ion-input type="number"  [(ngModel)]="telefonoMotoTaxi" name="telefonoMotoTaxi" required></ion-input>
+      <ion-label position="floating">Teléfono/celular </ion-label>
+      <ion-input 
+      type="number" 
+      [(ngModel)]="myModelo.telefonoMotoTaxi" 
+      name="telefonoMotoTaxi"
+      #telefonoMotoTaxi="ngModel"
+      placeholder="7000008"
+      maxlength="8"
+      required>
+      </ion-input>
     </ion-item>
+    <div class="form-error" *ngIf="telefonoMotoTaxi.errors && (telefonoMotoTaxi.dirty || telefonoMotoTaxi.touched)">
+      <p style="font-size:15px;color:#f04141" [hidden]="!telefonoMotoTaxi.errors.required">Telefono o celular obligatorio.</p>
+      <p style="font-size:15px;color:#f04141" [hidden]="!telefonoMotoTaxi.errors.maxlength">Numero de caract.</p>
+    </div>
+
+
+
     <ion-item>
-      <ion-label position="floating">placa del vehículo </ion-label>
-      <ion-input type="text"  [(ngModel)]="placaMotoTaxi" name="placaMotoTaxi" required></ion-input>
+      <ion-label position="floating">Placa del vehículo </ion-label>
+      <ion-input 
+      type="text" 
+      [(ngModel)]="myModelo.placaMotoTaxi" 
+      name="placaMotoTaxi"
+      #placaMotoTaxi="ngModel"
+      placeholder="1234ABC"
+      onkeyup="javascript:this.value=this.value.toUpperCase();"
+      maxlength="7"
+      required>
+      </ion-input>
     </ion-item>
+    <div class="form-error" *ngIf="placaMotoTaxi.errors && (placaMotoTaxi.dirty || placaMotoTaxi.touched)">
+      <p style="font-size:15px;color:#f04141" [hidden]="!placaMotoTaxi.errors.required">Placa obligatoria.</p>
+      <p style="font-size:15px;color:#f04141" [hidden]="!placaMotoTaxi.errors.maxlength">Numero de caract.</p>
+    </div>
+
+
+
     <ion-item>
-      <ion-label position="floating">email </ion-label>
-      <ion-input type="text"  [(ngModel)]="email" name="email" required></ion-input>
+      <ion-label position="floating">Email </ion-label>
+      <ion-input 
+      type="text" 
+      [(ngModel)]="myModelo.email" 
+      name="email"
+      #email="ngModel"
+      placeholder="ejemplo@gmail.com"
+      email
+      required>
+      </ion-input>
     </ion-item>
+    <div class="form-error" *ngIf="email.errors && (email.dirty || email.touched)">
+      <p style="font-size:15px;color:#f04141" [hidden]="!email.errors.required">Correo obligatoria.</p>
+      <p style="font-size:15px;color:#f04141" [hidden]="!email.errors.email">Correo invalido</p>
+    </div>
+
+
+
     <ion-item>
-      <ion-label position="floating">contraseña </ion-label>
-      <ion-input type="password"  [(ngModel)]="password" name="password" required></ion-input>
+      <ion-label position="floating">Contraseña </ion-label>
+      <ion-input 
+      type="password"
+      [(ngModel)]="myModelo.password" 
+      name="password"
+      #password="ngModel"
+      placeholder="Minimo 7 caracteres"
+      minlength="7"
+      required>
+      </ion-input>
     </ion-item>
+    <div class="form-error" *ngIf="password.errors && (password.dirty || password.touched)">
+      <p style="font-size:15px;color:#f04141" [hidden]="!password.errors.required">Contraseña obligatoria.</p>
+      <p style="font-size:15px;color:#f04141" [hidden]="!password.errors.minlength">Contraseña muy corta</p>
+    </div>
+
+
+
     <br>
-      <ion-label>Seleccionar imagen:</ion-label>
-  
-      <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
-        <input type="file" id="fichero-tarifas" class="input-file" accept=".png, .jpg" (change)="onUpload($event)" value="">
-        Subir Imagen...
-        </div>
-  
-      <ion-input   type="hidden" [value]="urlImagen | async" [(ngModel)]="imagenMotoTaxi" value=""></ion-input>
+    <ion-label>Seleccionar imagen:</ion-label>
+
+    <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
+      <input 
+      type="file" 
+      id="fichero-tarifas" 
+      class="input-file" 
+      accept=".png, .jpg" 
+      (change)="onUpload($event)"
+      value="">
+      Subir Imagen...
+    </div>
+
+    <ion-input type="hidden" [value]="urlImagen | async" [(ngModel)]="imagenMotoTaxi" value=""></ion-input>
     <br>
-    <ion-button  *ngIf="urlImagen | async; else registarDisabled"  (click)="registrando()" expand="block" color="secondary" >Registrar</ion-button>
-  
+    <ion-button *ngIf="urlImagen | async; else registarDisabled" (click)="registrando()" expand="block"
+      color="secondary">Registrar</ion-button>
+
     <ng-template #registarDisabled>
       <ion-button (click)="registrando()" expand="block" color="secondary" disabled="true">Registrar</ion-button>
-    </ng-template> 
-  </ion-content>
-  
+    </ng-template>
+
+
+
+  </form>
+
+
+
+
+</ion-content>
