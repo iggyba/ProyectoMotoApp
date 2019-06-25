@@ -10,47 +10,43 @@ import { storage } from 'firebase';
   providedIn: 'root'
 })
 export class FotosService {
- 
-  image:string;
+
+  image: string;
 
   constructor(private camara: Camera,
-              private webView: WebView,
-              private file: File,
-              private AFStorage : AngularFireStorage) { }
+    private webView: WebView,
+    private file: File,
+    private AFStorage: AngularFireStorage) { }
 
 
-   /* async*/ takePicture(){
-    
-      
+    takePicture() {
     const options: CameraOptions = {
-      quality: 50,
+      quality: 40,
       targetHeight: 750,
-      targetWidth:750,
+      targetWidth: 750,
       destinationType: this.camara.DestinationType.DATA_URL,
       encodingType: this.camara.EncodingType.JPEG,
       mediaType: this.camara.MediaType.PICTURE,
       sourceType: this.camara.PictureSourceType.CAMERA
     };
-    /*const id = Math.random().toString(36).substring(2);
-    const result = await this.camara.getPicture(options);
-    this.image = `data:image/jpeg;base64,${result}`;
-    const pictures = storage().ref(`profilepicture_${id}`);
-    pictures.putString(this.image,'data_url');*/
     
-    /*await*/ this.camara.getPicture(options).then((imageData) =>{
-      this.image = 'data:image/jpeg;base64, '+imageData;
+      return this.camara.getPicture(options).then((imageData) => {
+      this.image = 'data:image/jpeg;base64,' + imageData;
       return this.image;
-    }), (err) =>{
+    }, (err) => {
       console.log(err);
-    }
-  } 
-  uploadImage(imagen: string){
+    });
+  }
 
+  uploadImage(imagen: string) {
+    const id = Math.random().toString(36).substring(2);
+    const pictures = storage().ref(`profilepicture_${id}`);
+    pictures.putString(imagen,'data_url');
   }
 
   makeFileIntoBlob(_imagePath) {
-    console.log(_imagePath.replace(":",""));
-    _imagePath=_imagePath.replace(":","");
+    console.log(_imagePath.replace(":", ""));
+    _imagePath = _imagePath.replace(":", "");
     return new Promise((resolve, reject) => {
       let fileName = "";
       this.file
@@ -69,7 +65,7 @@ export class FotosService {
           let imgBlob = new Blob([buffer], {
             type: "image/jpeg"
           });
-          
+
           // pass back blob and the name of the file for saving
           // into fire base
           const task = this.AFStorage.upload(fileName, imgBlob);
@@ -81,5 +77,5 @@ export class FotosService {
         .catch(e => reject(e));
     });
   }
-  
+
 }

@@ -5,6 +5,8 @@ import { auth } from 'firebase';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
 import { MototaxisService} from "../servicios/mototaxis.service";
+import { FotosService } from "../servicios/fotos.service";
+import { LoadingController } from '@ionic/angular';
 
 
 
@@ -19,7 +21,9 @@ export class AuthService {
   constructor(private AFauth: AngularFireAuth, 
               private db: AngularFirestore,
               public router : Router,
-              public mototaxisService : MototaxisService) { }
+              public mototaxisService : MototaxisService,
+              private fotosService: FotosService,
+              public loadingController: LoadingController) { }
 
   login(email: string, password: string) {
 
@@ -57,6 +61,8 @@ export class AuthService {
         disponible: false,
         uid: uid
       })
+      this.fotosService.uploadImage(imagen);
+      //this.presentLoading();
       this.router.navigate(['/menu-registros']);
       alert("Moto Taxista registrado con éxito");
       }).catch(err => reject(err));
@@ -67,5 +73,18 @@ export class AuthService {
     this.AFauth.auth.signOut().then(() =>{
     this.router.navigate(['/login']);
     })
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando mototaxista',
+      duration: 4000,
+      spinner: 'dots',
+      translucent: true
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+
   }
 }

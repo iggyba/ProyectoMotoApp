@@ -36,10 +36,10 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Contraseña </ion-label>
-    <ion-input type="password"  [(ngModel)]="password" name="password"></ion-input>
+    <ion-input type="text"  [(ngModel)]="password" name="password"></ion-input>
   </ion-item>
   <br>
-    <ion-label>Seleccionar Imagen:</ion-label>
+   <!--<ion-label>Seleccionar Imagen:</ion-label>
 
     <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
       <input type="file" id="fichero-tarifas" class="input-file" accept=".png, .jpg" (change)="onUpload($event)" value="">
@@ -52,9 +52,15 @@
 
   <ng-template #registarDisabled>
     <ion-button (click)="registrando()" expand="block" color="secondary" disabled="true">Registrar</ion-button>
-  </ng-template> 
+  </ng-template> --> 
 
-  <ion-button (click)="tomarFoto()">Tomar foto</ion-button>
-  <br>
+  <!--<ion-button (click)="tomarFoto()">Tomar foto</ion-button>-->
+  <ion-item>
   <img *ngIf="image" [src]="image" alt="image">
+  </ion-item>
+  
+  <ion-icon name="camera" (click)="tomarFoto()" class="iconcamara"></ion-icon>
+ 
+  <ion-button (click)="registrando()" expand="block" color="secondary" >Registrar</ion-button>
+  
 </ion-content>

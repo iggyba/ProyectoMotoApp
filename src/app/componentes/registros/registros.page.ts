@@ -24,7 +24,7 @@ export class RegistrosPage implements OnInit {
   fechaNacimientoMotoTaxi:Date;
   email:string;
   password:string;
-  imagenMotoTaxi:string;
+  imagenMotoTaxi:any;
 
   urlImagen: Observable<string>;
 
@@ -46,7 +46,6 @@ export class RegistrosPage implements OnInit {
     this.placaMotoTaxi,this.email,this.password,this.imagenMotoTaxi,
     this.carnetIdentidadMotoTaxi,this.fechaNacimientoMotoTaxi).then( res =>{ 
     
-      
 
     }).catch(err=> {alert("No se pudo registrar al moto taxista");
   })
@@ -59,12 +58,10 @@ export class RegistrosPage implements OnInit {
   this.imagenMotoTaxi="";
   this.telefonoMotoTaxi="";
   this.carnetIdentidadMotoTaxi="";
-  this.urlImagen=null;
   this.fechaNacimientoMotoTaxi=null;
-  
   }
 
-  onUpload(e){
+  /*onUpload(e){
   
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
@@ -73,12 +70,18 @@ export class RegistrosPage implements OnInit {
     const ref = this.AFStorage.ref(filePath);
     const task = this.AFStorage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
-  }
+  }*/
 
   tomarFoto(){
-   //this.image=this.fotosService.takePicture();
-
-    this.image=this.fotosService.takePicture();
-      
+   
+    this.fotosService.takePicture().then(imagen =>{
+      this.image=imagen;
+      this.imagenMotoTaxi=imagen;
+      //this.fotosService.uploadImage(this.image);
+    }), (err) =>
+    {
+      console.log(err);
+    }
+   // 
 }
 }
