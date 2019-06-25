@@ -92,7 +92,7 @@ export class RegistrosPage implements OnInit {
   }
 
 }
-
+//hhhhhhhhhhhhhhhh
 
 
 
