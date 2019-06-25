@@ -3,6 +3,7 @@ import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 import { WebView } from "@ionic-native/ionic-webview/ngx";
 import { File } from '@ionic-native/file/ngx';
 import { AngularFireStorage } from "@angular/fire/storage";
+import { storage } from 'firebase';
 
 
 @Injectable({
@@ -17,24 +18,31 @@ export class FotosService {
               private file: File,
               private AFStorage : AngularFireStorage) { }
 
-    takePicture(){
+
+    async takePicture(){
+      try{
     const options: CameraOptions = {
       quality: 50,
-      destinationType: this.camara.DestinationType.FILE_URI,
+      targetHeight: 750,
+      targetWidth:750,
+      destinationType: this.camara.DestinationType.DATA_URL,
       encodingType: this.camara.EncodingType.JPEG,
-      mediaType: this.camara.MediaType.PICTURE,
-      sourceType: this.camara.PictureSourceType.CAMERA
+      mediaType: this.camara.MediaType.PICTURE
     };
-    return this.camara.getPicture(options).then((imageData) => 
-    {
-      this.image = this.webView.convertFileSrc(imageData);
-      return this.image;
-    }, (err) =>
-    {
-      console.log(err);
-    })
+    const result = await this.camara.getPicture(options);
+    const image = `data:image/jpeg;base64,${result}`;
+    const pictures = storage().ref('pictures');
+    pictures.putString(image,'data_url');
+    return result;
+  }
+  catch (e){
+    console.log(e);
+  }
   } 
-  
+  uploadImage(){
+
+  }
+
   makeFileIntoBlob(_imagePath) {
     console.log(_imagePath.replace(":",""));
     _imagePath=_imagePath.replace(":","");

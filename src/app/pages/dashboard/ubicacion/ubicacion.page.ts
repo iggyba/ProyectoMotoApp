@@ -49,12 +49,4 @@ export class UbicacionPage implements OnInit {
       });
     } 
   }
-
-  /*private sndUbicAFireBase(position : position, id : string)
-  { 
-    id = '3oiNsUoWTEMY4NHE8p2L'
-    this.db.collection('MotoTaxistas').doc(id).update({
-      posicion : position
-    })
-  }*/
 }

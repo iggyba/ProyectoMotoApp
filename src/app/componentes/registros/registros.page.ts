@@ -76,13 +76,6 @@ export class RegistrosPage implements OnInit {
   }
 
   tomarFoto(){
-   this.fotosService.takePicture().then( imagen =>{
-     console.log(imagen);
-    this.image=imagen;
-    this.fotosService.makeFileIntoBlob(imagen);
-  }, (err) =>
-  {
-    console.log(err);
-  })
+   this.image=this.fotosService.takePicture();
 }
 }
