@@ -76,6 +76,9 @@ export class RegistrosPage implements OnInit {
   }
 
   tomarFoto(){
-   this.image=this.fotosService.takePicture();
+   //this.image=this.fotosService.takePicture();
+
+    this.image=this.fotosService.takePicture();
+      
 }
 }

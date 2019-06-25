@@ -25,11 +25,13 @@ import { File } from '@ionic-native/file/ngx';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, IonicModule.forRoot(),
+    BrowserModule, 
+    IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     ],
   providers: [
     StatusBar,

@@ -19,27 +19,32 @@ export class FotosService {
               private AFStorage : AngularFireStorage) { }
 
 
-    async takePicture(){
-      try{
+   /* async*/ takePicture(){
+    
+      
     const options: CameraOptions = {
       quality: 50,
       targetHeight: 750,
       targetWidth:750,
       destinationType: this.camara.DestinationType.DATA_URL,
       encodingType: this.camara.EncodingType.JPEG,
-      mediaType: this.camara.MediaType.PICTURE
+      mediaType: this.camara.MediaType.PICTURE,
+      sourceType: this.camara.PictureSourceType.CAMERA
     };
+    /*const id = Math.random().toString(36).substring(2);
     const result = await this.camara.getPicture(options);
-    const image = `data:image/jpeg;base64,${result}`;
-    const pictures = storage().ref('pictures');
-    pictures.putString(image,'data_url');
-    return result;
-  }
-  catch (e){
-    console.log(e);
-  }
+    this.image = `data:image/jpeg;base64,${result}`;
+    const pictures = storage().ref(`profilepicture_${id}`);
+    pictures.putString(this.image,'data_url');*/
+    
+    /*await*/ this.camara.getPicture(options).then((imageData) =>{
+      this.image = 'data:image/jpeg;base64, '+imageData;
+      return this.image;
+    }), (err) =>{
+      console.log(err);
+    }
   } 
-  uploadImage(){
+  uploadImage(imagen: string){
 
   }
 
