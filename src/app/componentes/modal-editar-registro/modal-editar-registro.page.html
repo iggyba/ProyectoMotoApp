@@ -23,7 +23,7 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Fecha de Nacimiento</ion-label>
-    <ion-datetime display-format="D/MM/YYYY" picker-format="MM D YYYY" [(ngModel)]="fechaNacimientoMotoTaxi"
+    <ion-datetime display-format="D/MM/YYYY" picker-format="D MM YYYY" [(ngModel)]="fechaNacimientoMotoTaxi"
       name="fechaNacimientoMotoTaxi"></ion-datetime>
   </ion-item>
   <ion-item>
@@ -35,13 +35,11 @@
     <ion-input type="text" [(ngModel)]="placaMotoTaxi" name="placaMotoTaxi"></ion-input>
   </ion-item>
   <br>
-  <ion-label>Cambiar imagen:</ion-label>
   
-  <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
-    <input type="file" id="fichero-tarifas" class="input-file" accept=".png, .jpg" (change)="onUpload($event)" value="">
-    Subir nueva Imagen...
-    </div>
-  <ion-input  [value]="urlImagen | async" [(ngModel)]="imagenMotoTaxi"></ion-input>
-  <br>
+  <ion-item>
+    <img *ngIf="image" [src]="image" alt="image">
+    </ion-item>
+    
+    <ion-icon name="camera" (click)="tomarFoto()" class="iconcamara"></ion-icon>
   <ion-button (click)="modificando()" expand="block" color="secondary">Modificar</ion-button>
 </ion-content>

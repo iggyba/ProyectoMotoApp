@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { database } from 'firebase';
 import { map } from "rxjs/operators";
+import { FotosService } from "../servicios/fotos.service";
 
 
 
@@ -25,7 +26,7 @@ export interface motoTaxi {
 })
 export class MototaxisService {
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore,private fotosService: FotosService) { }
 
   getDatosMotoTaxis() {
     return this.db.collection('motoTaxis').snapshotChanges().pipe(map(taxis => {
@@ -62,6 +63,7 @@ export class MototaxisService {
       fechaNacimientoMotoTaxi: fechaNacimientoMotoTaxiM,
       imagenMotoTaxi: imagenMotoTaxiM
     })
+    this.fotosService.uploadImage(imagenMotoTaxiM);
   }
 
   cambiarDisponibilidadTrue(idMotoTaxi:string){

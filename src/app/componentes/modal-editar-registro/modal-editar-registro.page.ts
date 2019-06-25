@@ -5,6 +5,7 @@ import { MototaxisService, motoTaxi } from "../../servicios/mototaxis.service";
 import { Observable } from "rxjs/internal/observable";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { finalize } from "rxjs/operators";
+import { FotosService } from "../../servicios/fotos.service";
 
 
 @Component({
@@ -21,15 +22,17 @@ export class ModalEditarRegistroPage implements OnInit {
   placaMotoTaxi: string;
   carnetIdentidadMotoTaxi: string;
   fechaNacimientoMotoTaxi: Date;
-  imagenMotoTaxi: string;
+  imagenMotoTaxi: any;
   idMotoTaxi:string;
 
   urlImagen: Observable<string>;
+  image: any;
 
   constructor(private modalCtrl: ModalController,
     private navParam: NavParams,
     private mototaxiService: MototaxisService,
-    private AFStorage: AngularFireStorage, ) { }
+    private AFStorage: AngularFireStorage, 
+    private fotosService: FotosService) { }
 
   ngOnInit() {
     const data = this.navParam.get('value') as motoTaxi;
@@ -48,7 +51,7 @@ export class ModalEditarRegistroPage implements OnInit {
   }
 
 
-  onUpload(e) {
+  /*onUpload(e) {
 
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
@@ -56,7 +59,7 @@ export class ModalEditarRegistroPage implements OnInit {
     const ref = this.AFStorage.ref(filePath);
     const task = this.AFStorage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
-  }
+  }*/
 
   modificando() {
 
@@ -65,5 +68,15 @@ export class ModalEditarRegistroPage implements OnInit {
       this.imagenMotoTaxi,this.idMotoTaxi);
 
     this.onCloseModal();
+  }
+
+  tomarFoto(){
+    this.fotosService.takePicture().then(imagen =>{
+      this.image=imagen;
+      this.imagenMotoTaxi=imagen;
+    }), (err) =>
+    {
+      console.log(err);
+    }
   }
 }
