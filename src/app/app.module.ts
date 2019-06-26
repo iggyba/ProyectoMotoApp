@@ -19,7 +19,8 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
 import { Camera } from "@ionic-native/camera/ngx";
 import { WebView } from "@ionic-native/ionic-webview/ngx";
 import { File } from '@ionic-native/file/ngx';
-
+import { FormsModule } from "@angular/forms";
+import { CustomFormsModule } from 'ng2-validation'
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,8 @@ import { File } from '@ionic-native/file/ngx';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    FormsModule,
+    CustomFormsModule
     ],
   providers: [
     StatusBar,
