@@ -64,6 +64,7 @@ export class MototaxisService {
       imagenMotoTaxi: imagenMotoTaxiM
     })
     this.fotosService.uploadImage(imagenMotoTaxiM);
+    alert("Mototaxista modificado con éxito");
   }
 
   cambiarDisponibilidadTrue(idMotoTaxi:string){

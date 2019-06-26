@@ -5,7 +5,7 @@ import { finalize } from "rxjs/operators";
 import { Observable } from "rxjs/internal/observable";
 import { Router } from "@angular/router";
 import { FotosService } from "../../servicios/fotos.service";
-
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -16,15 +16,15 @@ import { FotosService } from "../../servicios/fotos.service";
 export class RegistrosPage implements OnInit {
 
 
-  nombreMotoTaxi:string;
-  apellidoMotoTaxi:string;
-  telefonoMotoTaxi:string;
-  placaMotoTaxi:string;
-  carnetIdentidadMotoTaxi:string;
-  fechaNacimientoMotoTaxi:Date;
-  email:string;
-  password:string;
-  imagenMotoTaxi:any;
+  nombreMotoTaxi: string;
+  apellidoMotoTaxi: string;
+  telefonoMotoTaxi: string;
+  placaMotoTaxi: string;
+  carnetIdentidadMotoTaxi: string;
+  fechaNacimientoMotoTaxi: Date;
+  email: string;
+  password: string;
+  imagenMotoTaxi: any;
 
   urlImagen: Observable<string>;
 
@@ -32,33 +32,33 @@ export class RegistrosPage implements OnInit {
   rutaArchivo: string;
   image: any;
 
-  constructor(private authService : AuthService, 
-              private AFStorage : AngularFireStorage, 
-              public router : Router,
-              private fotosService: FotosService
-              ) { }
+  constructor(private authService: AuthService,
+    private AFStorage: AngularFireStorage,
+    public router: Router,
+    private fotosService: FotosService,
+    private loadingController: LoadingController
+  ) { }
 
   ngOnInit() {
   }
 
-  registrando(){
-    this.authService.registrarMotoTaxi(this.nombreMotoTaxi,this.apellidoMotoTaxi,this.telefonoMotoTaxi,
-    this.placaMotoTaxi,this.email,this.password,this.imagenMotoTaxi,
-    this.carnetIdentidadMotoTaxi,this.fechaNacimientoMotoTaxi).then( res =>{ 
-    
-
-    }).catch(err=> {alert("No se pudo registrar al moto taxista");
-  })
-
-  this.nombreMotoTaxi="";
-  this.password="";
-  this.apellidoMotoTaxi="";
-  this.email="";
-  this.placaMotoTaxi="";
-  this.imagenMotoTaxi="";
-  this.telefonoMotoTaxi="";
-  this.carnetIdentidadMotoTaxi="";
-  this.fechaNacimientoMotoTaxi=null;
+  registrando() {
+      this.authService.registrarMotoTaxi(this.nombreMotoTaxi, this.apellidoMotoTaxi, this.telefonoMotoTaxi,
+      this.placaMotoTaxi, this.email, this.password, this.imagenMotoTaxi,
+      this.carnetIdentidadMotoTaxi, this.fechaNacimientoMotoTaxi).then(res => {
+      this.nombreMotoTaxi = "";
+      this.password = "";
+      this.apellidoMotoTaxi = "";
+      this.email = "";
+      this.placaMotoTaxi = "";
+      this.imagenMotoTaxi = "";
+      this.telefonoMotoTaxi = "";
+      this.carnetIdentidadMotoTaxi = "";
+      this.fechaNacimientoMotoTaxi = null;
+      this.image = null;
+      }).catch(err => {
+        alert("No se pudo registrar al moto taxista");
+      })
   }
 
   /*onUpload(e){
@@ -72,16 +72,15 @@ export class RegistrosPage implements OnInit {
     task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
   }*/
 
-  tomarFoto(){
-   
-    this.fotosService.takePicture().then(imagen =>{
-      this.image=imagen;
-      this.imagenMotoTaxi=imagen;
+  tomarFoto() {
+
+    this.fotosService.takePicture().then(imagen => {
+      this.image = imagen;
+      this.imagenMotoTaxi = imagen;
       //this.fotosService.uploadImage(this.image);
-    }), (err) =>
-    {
+    }), (err) => {
       console.log(err);
     }
-   // 
-}
+    // 
+  }
 }

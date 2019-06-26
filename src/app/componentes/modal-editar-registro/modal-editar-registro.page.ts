@@ -66,7 +66,6 @@ export class ModalEditarRegistroPage implements OnInit {
     this.mototaxiService.modificarMotoTaxi(this.nombreMotoTaxi,this.apellidoMotoTaxi,this.telefonoMotoTaxi,
       this.carnetIdentidadMotoTaxi,this.placaMotoTaxi,this.fechaNacimientoMotoTaxi,
       this.imagenMotoTaxi,this.idMotoTaxi);
-
     this.onCloseModal();
   }
 

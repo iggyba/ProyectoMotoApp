@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MototaxisService, motoTaxi } from "../../servicios/mototaxis.service";
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController,LoadingController } from '@ionic/angular';
 import { ModalEditarRegistroPage } from '../modal-editar-registro/modal-editar-registro.page';
 
 @Component({
@@ -12,17 +12,16 @@ export class ListadoDatosPage implements OnInit {
 
   public motoTaxisArreglo: any = [];
 
-  constructor(public mototaxisService: MototaxisService, 
-              public alertCtrl : AlertController,
-              private modalCtrl: ModalController) { }
+  constructor(public mototaxisService: MototaxisService,
+    public alertCtrl: AlertController,
+    private modalCtrl: ModalController,
+    private loadingController: LoadingController) { }
 
   ngOnInit() {
-    this.mototaxisService.getDatosMotoTaxis().subscribe( motoTaxis =>{
-      this.motoTaxisArreglo=motoTaxis;
-    })
+    this.cargarLista();
   }
 
-  async onDelete(mototaxi: motoTaxi){
+  async onDelete(mototaxi: motoTaxi) {
     const alert = await this.alertCtrl.create({
       header: 'Eliminando',
       message: `¿Estás seguro de que deseas eliminar al empleado/a ${mototaxi.nombreMotoTaxi} de carnet ${mototaxi.carnetIdentidadMotoTaxi}?`,
@@ -46,12 +45,25 @@ export class ListadoDatosPage implements OnInit {
     await alert.present();
   }
 
-  async onOpenEditModal(mototaxi: motoTaxi){
+  async onOpenEditModal(mototaxi: motoTaxi) {
     const modal = await this.modalCtrl.create({
       component: ModalEditarRegistroPage,
-      componentProps: { value: mototaxi},
+      componentProps: { value: mototaxi },
     });
     return await modal.present();
+  }
+
+  async cargarLista() {
+    let loading = await this.loadingController.create({
+      message: "Cargando",
+      spinner: "bubbles"
+    });
+    loading.present().then(() => {
+      this.mototaxisService.getDatosMotoTaxis().subscribe(motoTaxis => {
+        this.motoTaxisArreglo = motoTaxis;
+      })
+      loading.dismiss();
+    })
   }
 
 }

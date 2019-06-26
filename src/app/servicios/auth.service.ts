@@ -10,6 +10,7 @@ import { LoadingController } from '@ionic/angular';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +24,7 @@ export class AuthService {
               public router : Router,
               public mototaxisService : MototaxisService,
               private fotosService: FotosService,
-              public loadingController: LoadingController) { }
+              private loadingController: LoadingController) { }
 
   login(email: string, password: string) {
 
@@ -44,47 +45,49 @@ export class AuthService {
   }
 
 
-  registrarMotoTaxi(nombre: string, apellido: string, telefono: string, placa: string, 
+  async registrarMotoTaxi(nombre: string, apellido: string, telefono: string, placa: string, 
     email: string, password: string, imagen: string,carnet:string,fechanacimiento:Date) {
-      
-    return new Promise((resolve, reject) => {
-      this.AFauth.auth.createUserWithEmailAndPassword(email, password).then(res => {
-      const uid = res.user.uid;
-      this.db.collection('motoTaxis').doc(uid).set({
-        nombreMotoTaxi:nombre,
-        apellidoMotoTaxi:apellido,
-        telefonoMotoTaxi: telefono,
-        placaMotoTaxi: placa,
-        imagenMotoTaxi:imagen,
-        carnetIdentidadMotoTaxi:carnet,
-        fechaNacimientoMotoTaxi:fechanacimiento,
-        disponible: false,
-        uid: uid
+      let loading = await this.loadingController.create({
+        message: "Cargando",
+        spinner: "bubbles"
+      });
+      loading.present().then(() => {
+
+          this.AFauth.auth.createUserWithEmailAndPassword(email, password).then(res => {
+          const uid = res.user.uid;
+          this.db.collection('motoTaxis').doc(uid).set({
+
+            nombreMotoTaxi:nombre,
+            apellidoMotoTaxi:apellido,
+            telefonoMotoTaxi: telefono,
+            placaMotoTaxi: placa,
+            imagenMotoTaxi:imagen,
+            carnetIdentidadMotoTaxi:carnet,
+            fechaNacimientoMotoTaxi:fechanacimiento,
+            disponible: false,
+            uid: uid
+
+          })
+          this.fotosService.uploadImage(imagen);
+          alert("Moto Taxista registrado con éxito");
+          loading.dismiss();
+          this.router.navigate(['/menu-registros']);
+          
+          }).catch(err => {reject(err)
+          alert("Moto Taxista registrado sin éxito");
+          loading.dismiss();
+          });
+        
       })
-      this.fotosService.uploadImage(imagen);
-      //this.presentLoading();
-      this.router.navigate(['/menu-registros']);
-      alert("Moto Taxista registrado con éxito");
-      }).catch(err => reject(err));
-    });
-  }
+
+
+
+
+      }
 
   logout(){
     this.AFauth.auth.signOut().then(() =>{
     this.router.navigate(['/login']);
     })
-  }
-
-  async presentLoading() {
-    const loading = await this.loadingController.create({
-      message: 'Cargando mototaxista',
-      duration: 4000,
-      spinner: 'dots',
-      translucent: true
-    });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
-
   }
 }
