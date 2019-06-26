@@ -9,6 +9,7 @@ import { from } from 'rxjs';
 import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { NavController, } from '@ionic/angular'
+import { Alert } from 'selenium-webdriver';
 
 
 @Component({
@@ -43,8 +44,8 @@ export class RegistrosPage implements OnInit {
     private AFStorage: AngularFireStorage,
     public router: Router,
     public navCtrl: NavController,
-    public alertCtrl: AlertController,
-    public document: Document
+    public alertCtrl: AlertController
+    // public document: Document
   ) {
     this.myModelo = {};
   }
@@ -61,7 +62,7 @@ export class RegistrosPage implements OnInit {
       this.placaMotoTaxi, this.email, this.password, this.imagenMotoTaxi,
       this.carnetIdentidadMotoTaxi, this.fechaNacimientoMotoTaxi).then(res => {
 
-      }).catch(err => { alert("No se pudo registrar al moto taxista"); })
+      }).catch((err) => {console.log("No se pudo registrar al moto taxista"); })
 
 
 
@@ -90,25 +91,26 @@ export class RegistrosPage implements OnInit {
     const task = this.AFStorage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
   }
-}
 
 
-    function activarBoton() {
-    if (verificar()) {
-    this.btnRegistrar.disabled = false
-    }
-    else {
-    this.btnRegistrar.disabled = true
+
+
+  /* function activarBoton() {
+   if (verificar()) {
+   this.btnRegistrar.disabled = false
    }
+   else {
+   this.btnRegistrar.disabled = true
+  }
 }
 
 function verificar() {
-  if (this.nombreMotoTaxi.value === "")
-    return false;
+ if (this.nombreMotoTaxi.value === "")
+   return false;
 
-  if (this.apellidoMotoTaxi.value === "")
-    return false;
-  return true;
+ if (this.apellidoMotoTaxi.value === "")
+   return false;
+ return true;
 }
 
 this.btnRegistrar = document.getElementById("btnRegistrar");
@@ -120,20 +122,21 @@ this.nombreMotoTaxi.onkeyup = this.pellidoMotoTaxi.onkeyup = activarBoton;
 
 
 
- /* buildForm(){
-    this.formularioUsuario = this.fb.group({
-      nombreMotoTaxi:['',[Validators.required,Validators.maxLength(30)]],
-      apellidoMotoTaxi:['',[Validators.required,Validators.maxLength(30)]],
-      carnetIdentidadMotoTaxi:['',[Validators.required,Validators.maxLength(10)]],
-      fechaNacimientoMotoTaxi:['',[Validators.required,Validators.maxLength(6)]],
-      telefonoMotoTaxi:['',[Validators.required,Validators.maxLength(8)]],
-      placaMotoTaxi:['',[Validators.required,Validators.maxLength(10)]],
-      correo:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required]],
-      
-    });*/
-  
+ buildForm(){
+   this.formularioUsuario = this.fb.group({
+     nombreMotoTaxi:['',[Validators.required,Validators.maxLength(30)]],
+     apellidoMotoTaxi:['',[Validators.required,Validators.maxLength(30)]],
+     carnetIdentidadMotoTaxi:['',[Validators.required,Validators.maxLength(10)]],
+     fechaNacimientoMotoTaxi:['',[Validators.required,Validators.maxLength(6)]],
+     telefonoMotoTaxi:['',[Validators.required,Validators.maxLength(8)]],
+     placaMotoTaxi:['',[Validators.required,Validators.maxLength(10)]],
+     correo:['',[Validators.required,Validators.email]],
+     password:['',[Validators.required]],
+     
+   });*/
 
-  }
+
+}
+
 
 
