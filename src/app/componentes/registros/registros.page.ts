@@ -6,6 +6,11 @@ import { Observable } from "rxjs/internal/observable";
 import { Router } from "@angular/router";
 import { FotosService } from "../../servicios/fotos.service";
 import { LoadingController } from '@ionic/angular';
+import { from } from 'rxjs';
+import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
+import { NavController, } from '@ionic/angular'
+import { Alert } from 'selenium-webdriver';
 
 
 @Component({
@@ -31,16 +36,22 @@ export class RegistrosPage implements OnInit {
   archivo: any;
   rutaArchivo: string;
   image: any;
+  myModelo: any;
 
   constructor(private authService: AuthService,
     private AFStorage: AngularFireStorage,
     public router: Router,
     private fotosService: FotosService,
-    private loadingController: LoadingController
-  ) { }
+    private loadingController: LoadingController,
+    public navCtrl: NavController,
+    public alertCtrl: AlertController
+  ) { this.myModelo = {}; }
 
-  ngOnInit() {
-  }
+
+
+  
+
+ 
 
   registrando() {
       this.authService.registrarMotoTaxi(this.nombreMotoTaxi, this.apellidoMotoTaxi, this.telefonoMotoTaxi,
@@ -61,26 +72,52 @@ export class RegistrosPage implements OnInit {
       })
   }
 
+    ngOnInit() { }
+
   /*onUpload(e){
   
-    const id = Math.random().toString(36).substring(2);
-    const file = e.target.files[0];
-    this.archivo = file;
-    const filePath=`profile_${id}`;
-    const ref = this.AFStorage.ref(filePath);
-    const task = this.AFStorage.upload(filePath, file);
-    task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
-  }*/
+  ionViewDidLoad() { }
+
+
+  
+
+  registrando() {
+
+
+    this.authService.registrarMotoTaxi(this.nombreMotoTaxi, this.apellidoMotoTaxi, this.telefonoMotoTaxi,
+      this.placaMotoTaxi, this.email, this.password, this.imagenMotoTaxi,
+      this.carnetIdentidadMotoTaxi, this.fechaNacimientoMotoTaxi).then(res => {
+
+      }).catch((err) => {console.log("No se pudo registrar al moto taxista"); })
+
+
+
+
+    this.nombreMotoTaxi = "";
+    this.password = "";
+    this.apellidoMotoTaxi = "";
+    this.email = "";
+    this.placaMotoTaxi = "";
+    this.imagenMotoTaxi = "";
+    this.telefonoMotoTaxi = "";
+    this.carnetIdentidadMotoTaxi = "";
+    this.urlImagen = null;
+    this.fechaNacimientoMotoTaxi = null;
+    this.router.navigate(['/menu-registros']);
+
+  }
+*/
 
   tomarFoto() {
-
     this.fotosService.takePicture().then(imagen => {
       this.image = imagen;
       this.imagenMotoTaxi = imagen;
-      //this.fotosService.uploadImage(this.image);
     }), (err) => {
       console.log(err);
     }
-    // 
+     
   }
 }
+
+
+
