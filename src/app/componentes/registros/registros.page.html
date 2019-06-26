@@ -12,6 +12,7 @@
     <img class="icon" src="assets/icon/icon.png" alt="">
     
 
+    
     <ion-item>
       <ion-label position="floating">Nombre </ion-label>
       <ion-input 
@@ -24,6 +25,8 @@
     <div  class="form-error" *ngIf="nombreMotoTaxi.errors && (nombreMotoTaxi.dirty || nombreMotoTaxi.touched)">
       <p style="font-size:15px;color:#f04141" [hidden]="!nombreMotoTaxi.errors.required">Nombre obligatorio</p>
     </div>
+
+
 
 
     <ion-item>
@@ -60,6 +63,7 @@
       <p style="font-size:15px;color:#f04141" [hidden]="!carnetIdentidadMotoTaxi.errors.required">Carnet obligatorio.</p>
       <p style="font-size:15px;color:#f04141" [hidden]="!carnetIdentidadMotoTaxi.errors.maxlength">Numero de caract.</p>
     </div>
+
 
 
     <ion-item>

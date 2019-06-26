@@ -94,48 +94,6 @@ export class RegistrosPage implements OnInit {
 
 
 
-
-  /* function activarBoton() {
-   if (verificar()) {
-   this.btnRegistrar.disabled = false
-   }
-   else {
-   this.btnRegistrar.disabled = true
-  }
-}
-
-function verificar() {
- if (this.nombreMotoTaxi.value === "")
-   return false;
-
- if (this.apellidoMotoTaxi.value === "")
-   return false;
- return true;
-}
-
-this.btnRegistrar = document.getElementById("btnRegistrar");
-this.btnRegistrar.disabled = true;
-this.nombreMotoTaxi = this.form.nombreMotoTaxi;
-this.apellidoMotoTaxi = document.fr.apellidoMotoTaxi;
-
-this.nombreMotoTaxi.onkeyup = this.pellidoMotoTaxi.onkeyup = activarBoton;
-
-
-
- buildForm(){
-   this.formularioUsuario = this.fb.group({
-     nombreMotoTaxi:['',[Validators.required,Validators.maxLength(30)]],
-     apellidoMotoTaxi:['',[Validators.required,Validators.maxLength(30)]],
-     carnetIdentidadMotoTaxi:['',[Validators.required,Validators.maxLength(10)]],
-     fechaNacimientoMotoTaxi:['',[Validators.required,Validators.maxLength(6)]],
-     telefonoMotoTaxi:['',[Validators.required,Validators.maxLength(8)]],
-     placaMotoTaxi:['',[Validators.required,Validators.maxLength(10)]],
-     correo:['',[Validators.required,Validators.email]],
-     password:['',[Validators.required]],
-     
-   });*/
-
-
 }
 
 
