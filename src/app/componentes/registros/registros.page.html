@@ -5,15 +5,19 @@
 </ion-header>
 
 <ion-content padding>
- 
-  <form novalidate>
+  
+  <form novalidate name="fr">
+  
 
     <img class="icon" src="assets/icon/icon.png" alt="">
-
+    
 
     <ion-item>
       <ion-label position="floating">Nombre </ion-label>
-      <ion-input type="text" [(ngModel)]="myModelo.nombreMotoTaxi" name="nombreMotoTaxi" #nombreMotoTaxi="ngModel"
+      <ion-input 
+      type="text" 
+      [(ngModel)]="myModelo.nombreMotoTaxi" 
+      name="nombreMotoTaxi" #nombreMotoTaxi="ngModel"
         placeholder="Nombre" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
       </ion-input>
     </ion-item>
@@ -60,6 +64,7 @@
 
     <ion-item>
       <ion-label position="floating">Fecha de nacimiento</ion-label>
+      <!--  <ion-input type="text"  [(ngModel)]="fechaNacimientoMotoTaxi" name="fechaNacimientoMotoTaxi"></ion-input> -->
       <ion-datetime 
       display-format="D/MM/YYYY" 
       picker-format="MM D YYYY" 
@@ -168,14 +173,17 @@
 
     <ion-input type="hidden" [value]="urlImagen | async" [(ngModel)]="imagenMotoTaxi" value=""></ion-input>
     <br>
-    <ion-button *ngIf="urlImagen | async; else registarDisabled" (click)="registrando()" expand="block"
+    <ion-button *ngIf="urlImagen | async; else registarDisabled" (click)="registrando()" (click)="activarBoton()" expand="block"
       color="secondary">Registrar</ion-button>
 
     <ng-template #registarDisabled>
-      <ion-button (click)="registrando()" expand="block" color="secondary" disabled="true">Registrar</ion-button>
+      <ion-button 
+      id="btnRegistrar" 
+     
+      (click)="registrando()"
+      (click)="activarBoton()"
+      expand="block" color="secondary" disabled="true">Registrar</ion-button>
     </ng-template>
-
-
 
   </form>
 
