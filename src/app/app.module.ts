@@ -35,8 +35,7 @@ import { BackgroundMode } from "@ionic-native/background-mode/ngx";
     AngularFirestoreModule,
     AngularFireStorageModule,
     FormsModule,
-    CustomFormsModule,
-    BackgroundMode
+    CustomFormsModule
     ],
   providers: [
     StatusBar,
@@ -46,6 +45,7 @@ import { BackgroundMode } from "@ionic-native/background-mode/ngx";
     Camera,
     WebView,
     File,
+    BackgroundMode,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy,  },
     { provide: FirestoreSettingsToken, useValue: {}}
   ],
