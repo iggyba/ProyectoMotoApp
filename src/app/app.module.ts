@@ -21,6 +21,7 @@ import { WebView } from "@ionic-native/ionic-webview/ngx";
 import { File } from '@ionic-native/file/ngx';
 import { FormsModule } from "@angular/forms";
 import { CustomFormsModule } from 'ng2-validation'
+import { BackgroundMode } from "@ionic-native/background-mode/ngx";
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +35,8 @@ import { CustomFormsModule } from 'ng2-validation'
     AngularFirestoreModule,
     AngularFireStorageModule,
     FormsModule,
-    CustomFormsModule
+    CustomFormsModule,
+    BackgroundMode
     ],
   providers: [
     StatusBar,
