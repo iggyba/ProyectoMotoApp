@@ -40,33 +40,44 @@ export class RegistrosPage implements OnInit {
     private loadingController: LoadingController,
     public navCtrl: NavController,
     public alertCtrl: AlertController
-  ) { this.myModelo = {}; }
+  ) {
+    this.myModelo = {};
+  }
 
 
 
-  
 
- ionViewDidLoad() { }
 
-    ngOnInit() { }
+  ionViewDidLoad() { }
 
-  registrando() {
-    
-      this.authService.registrarMotoTaxi(this.nombreMotoTaxi, this.apellidoMotoTaxi, this.telefonoMotoTaxi,
+  ngOnInit() { }
+
+  registrando() { 
+
+    this.nombreMotoTaxi=this.myModelo.nombreMotoTaxi;
+    this.apellidoMotoTaxi=this.myModelo.apellidoMotoTaxi;
+    this.telefonoMotoTaxi=this.myModelo.telefonoMotoTaxi;
+    this.placaMotoTaxi=this.myModelo.placaMotoTaxi;
+    this.fechaNacimientoMotoTaxi=this.myModelo.fechaNacimientoMotoTaxi;
+    this.password=this.myModelo.password;
+    this.email=this.myModelo.email;
+    this.carnetIdentidadMotoTaxi=this.myModelo.carnetIdentidadMotoTaxi;
+
+    this.authService.registrarMotoTaxi(this.nombreMotoTaxi, this.apellidoMotoTaxi, this.telefonoMotoTaxi,
       this.placaMotoTaxi, this.email, this.password, this.imagenMotoTaxi,
       this.carnetIdentidadMotoTaxi, this.fechaNacimientoMotoTaxi).then(res => {
 
-      this.nombreMotoTaxi = "";
-      this.password = "";
-      this.apellidoMotoTaxi = "";
-      this.email = "";
-      this.placaMotoTaxi = "";
-      this.imagenMotoTaxi = "";
-      this.telefonoMotoTaxi = "";
-      this.carnetIdentidadMotoTaxi = "";
-      this.fechaNacimientoMotoTaxi = null;
-      this.image = null;
-      
+        this.nombreMotoTaxi = "";
+        this.password = "";
+        this.apellidoMotoTaxi = "";
+        this.email = "";
+        this.placaMotoTaxi = "";
+        this.imagenMotoTaxi = "";
+        this.telefonoMotoTaxi = "";
+        this.carnetIdentidadMotoTaxi = "";
+        this.fechaNacimientoMotoTaxi = null;
+        this.image = null;
+
       }).catch(err => {
         alert("No se pudo registrar al moto taxista");
       })
@@ -81,7 +92,7 @@ export class RegistrosPage implements OnInit {
     }), (err) => {
       console.log(err);
     }
-     
+
   }
 }
 

@@ -87,7 +87,7 @@
     <ion-item>
       <ion-label position="floating">Teléfono/celular </ion-label>
       <ion-input 
-      type="number" 
+      type="tel" 
       [(ngModel)]="myModelo.telefonoMotoTaxi" 
       name="telefonoMotoTaxi"
       #telefonoMotoTaxi="ngModel"
@@ -163,12 +163,14 @@
 
     <br>
     <ion-item>
+      <ion-label>Fotografía</ion-label>
       <img *ngIf="image" [src]="image" alt="image">
       </ion-item>
-      
+      <br>
+      <ion-label>Tomar fotografía</ion-label>
       <ion-icon name="camera" (click)="tomarFoto()" class="iconcamara"></ion-icon>
      
-      <ion-button (click)="registrando()" expand="block" color="secondary" >Registrar</ion-button>
+      <ion-button (click)="registrando()" expand="block" color="secondary">Registrar</ion-button>
 
   </form>
 
