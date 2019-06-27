@@ -47,11 +47,11 @@ export class AuthService {
 
   async registrarMotoTaxi(nombre: string, apellido: string, telefono: string, placa: string, 
     email: string, password: string, imagen: string,carnet:string,fechanacimiento:Date) {
-      let loading = await this.loadingController.create({
+     /* let loading = await this.loadingController.create({
         message: "Cargando",
         spinner: "bubbles"
       });
-      loading.present().then(() => {
+      loading.present().then(() => {*/
 
           this.AFauth.auth.createUserWithEmailAndPassword(email, password).then(res => {
           const uid = res.user.uid;
@@ -70,15 +70,15 @@ export class AuthService {
           })
           this.fotosService.uploadImage(imagen);
           alert("Moto Taxista registrado con éxito");
-          loading.dismiss();
+          //loading.dismiss();
           this.router.navigate(['/menu-registros']);
           
           }).catch(err => {reject(err)
           alert("Moto Taxista registrado sin éxito");
-          loading.dismiss();
+          //loading.dismiss();
           });
         
-      })
+      //})
 
 
 
