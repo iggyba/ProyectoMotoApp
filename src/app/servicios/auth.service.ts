@@ -28,10 +28,9 @@ export class AuthService {
     private loadingController: LoadingController) { }
 
   login(email: string, password: string) {
-
+    
     return new Promise((resolve, reject) => {
       this.AFauth.auth.signInWithEmailAndPassword(email, password).then(usuario => {
-
         this.idUsuario = usuario.user.uid;
         this.mototaxisService.cambiarDisponibilidadTrue(this.idUsuario);
         resolve(usuario.user.uid);
