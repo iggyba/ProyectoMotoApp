@@ -6,7 +6,8 @@ import { Observable } from "rxjs/internal/observable";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { finalize } from "rxjs/operators";
 import { FotosService } from "../../servicios/fotos.service";
-
+import { FormsModule } from '@angular/forms';     
+import { CustomFormsModule } from 'ng2-validation';
 
 @Component({
   selector: 'app-modal-editar-registro',
@@ -27,12 +28,14 @@ export class ModalEditarRegistroPage implements OnInit {
 
   urlImagen: Observable<string>;
   image: any;
-
+  myModelo: any;
   constructor(private modalCtrl: ModalController,
     private navParam: NavParams,
     private mototaxiService: MototaxisService,
     private AFStorage: AngularFireStorage, 
-    private fotosService: FotosService) { }
+    private fotosService: FotosService) { 
+      this.myModelo = {};
+    }
 
   ngOnInit() {
     const data = this.navParam.get('value') as motoTaxi;
@@ -50,16 +53,6 @@ export class ModalEditarRegistroPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-
-  /*onUpload(e) {
-
-    const id = Math.random().toString(36).substring(2);
-    const file = e.target.files[0];
-    const filePath = `profile_${id}`;
-    const ref = this.AFStorage.ref(filePath);
-    const task = this.AFStorage.upload(filePath, file);
-    task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
-  }*/
 
   modificando() {
 

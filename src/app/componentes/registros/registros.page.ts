@@ -1,3 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../servicios/auth.service";
 import { AngularFireStorage } from "@angular/fire/storage";
@@ -11,6 +14,7 @@ import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { NavController, } from '@ionic/angular'
 import { Alert } from 'selenium-webdriver';
+import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
 
 
 @Component({
@@ -39,7 +43,8 @@ export class RegistrosPage implements OnInit {
     private fotosService: FotosService,
     private loadingController: LoadingController,
     public navCtrl: NavController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public document : Document
   ) {
     this.myModelo = {};
   }
@@ -79,11 +84,11 @@ export class RegistrosPage implements OnInit {
         this.image = null;
 
       }).catch(err => {
-        alert("No se pudo registrar al moto taxista");
+        console.log("No se pudo registrar al moto taxista");
       })
   }
 
-
+  
 
   tomarFoto() {
     this.fotosService.takePicture().then(imagen => {
@@ -95,6 +100,19 @@ export class RegistrosPage implements OnInit {
 
   }
 }
+
+  function validar(){
+    var text1 = this.document.getElementById("nombreMotoTaxi");
+    var text2 = this.document.getElementById("apellidoMotoTaxi");
+    if(text1.value != ""  && text2.value != ""){
+        this.document.getElementById("btnregistrar").disabled = "true";  
+    }else{
+      this.document.getElementById("btnregistrar").disabled = "false"; 
+    }
+  }
+
+
+
 
 
 

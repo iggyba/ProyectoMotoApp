@@ -8,38 +8,137 @@
 </ion-header>
 
 <ion-content padding>
+    <form novalidate>
   <ion-img class="imagen" [src]="value.imagenMotoTaxi"></ion-img>
+
   <ion-item>
     <ion-label position="floating">Nombre</ion-label>
-    <ion-input type="text" [(ngModel)]="nombreMotoTaxi" name="nombreMotoTaxi" onkeyup="javascript:this.value=this.value.toUpperCase();"></ion-input>
+    <ion-input 
+    type="text" 
+      [(ngModel)]="myModelo.nombreMotoTaxi" 
+      name="nombreMotoTaxi" 
+      #nombreMotoTaxi="ngModel"
+      placeholder="Nombre"                         
+      onkeyup="javascript:this.value=this.value.toUpperCase();" 
+      required
+      onkeyup="validar();"
+      id="nombreMotoTaxi" >
+      </ion-input>
   </ion-item>
+  <div  class="form-error" *ngIf="nombreMotoTaxi.errors && (nombreMotoTaxi.dirty || nombreMotoTaxi.touched)">
+    <p style="font-size:15px;color:#f04141" [hidden]="!nombreMotoTaxi.errors.required">Nombre obligatorio</p>
+  </div>
+
+
+
   <ion-item>
     <ion-label position="floating">Apellido</ion-label>
-    <ion-input type="text" [(ngModel)]="apellidoMotoTaxi" name="apellidoMotoTaxi" onkeyup="javascript:this.value=this.value.toUpperCase();"></ion-input>
+    <ion-input 
+    type="text" 
+    [(ngModel)]="myModelo.apellidoMotoTaxi" 
+    #apellidoMotoTaxi="ngModel" 
+    name="apellidoMotoTaxi"
+    placeholder="Apellido"  
+    onkeyup="javascript:this.value=this.value.toUpperCase();" 
+    onkeyup="validar();"
+    id="apellidoMotoTaxi"
+    required>
+  </ion-input>
   </ion-item>
+  <div class="form-error" *ngIf="apellidoMotoTaxi.errors && (apellidoMotoTaxi.dirty || apellidoMotoTaxi.touched)">
+    <p style="font-size:15px;color:#f04141" [hidden]="!apellidoMotoTaxi.errors.required">Apellido obligatorio</p>
+  </div>
+
+
+
+
   <ion-item>
     <ion-label position="floating">Carnet de Identidad</ion-label>
-    <ion-input type="number" [(ngModel)]="carnetIdentidadMotoTaxi" name="carnetIdentidadMotoTaxi"></ion-input>
+    <ion-input 
+    type="text" 
+      [(ngModel)]="myModelo.carnetIdentidadMotoTaxi" 
+      name="carnetIdentidadMotoTaxi"
+      #carnetIdentidadMotoTaxi="ngModel"
+      onkeyup="javascript:this.value=this.value.toUpperCase();"
+      placeholder="1234567"
+      maxlength="7"
+      required>
+    </ion-input>
   </ion-item>
+  <div class="form-error" *ngIf="carnetIdentidadMotoTaxi.errors && (carnetIdentidadMotoTaxi.dirty || carnetIdentidadMotoTaxi.touched)">
+    <p style="font-size:15px;color:#f04141" [hidden]="!carnetIdentidadMotoTaxi.errors.required">Carnet obligatorio.</p>
+    <p style="font-size:15px;color:#f04141" [hidden]="!carnetIdentidadMotoTaxi.errors.maxlength">Numero de caract.</p>
+  </div>
+
+
+
   <ion-item>
     <ion-label position="floating">Fecha de Nacimiento</ion-label>
-    <ion-datetime display-format="D/MM/YYYY" picker-format="D MM YYYY" [(ngModel)]="fechaNacimientoMotoTaxi"
-      name="fechaNacimientoMotoTaxi"></ion-datetime>
+    <ion-datetime 
+    display-format="D/MM/YYYY" 
+    picker-format="MM D YYYY" 
+    [(ngModel)]="myModelo.fechaNacimientoMotoTaxi"
+    name="fechaNacimientoMotoTaxi"
+    #fechaNacimientoMotoTaxi="ngModel"
+    placeholder="Seleccione una fecha"
+    required>
+  </ion-datetime>
   </ion-item>
+  <div class="form-error" *ngIf="fechaNacimientoMotoTaxi.errors && (fechaNacimientoMotoTaxi.dirty || fechaNacimientoMotoTaxi.touched)">
+    <p style="font-size:15px;color:#f04141" [hidden]="!fechaNacimientoMotoTaxi.errors.required">Fecha de registro</p>
+  </div>
+
+
+
   <ion-item>
     <ion-label position="floating">Teléfono/Celular </ion-label>
-    <ion-input type="number" [(ngModel)]="telefonoMotoTaxi" name="telefonoMotoTaxi"></ion-input>
+    <ion-input 
+    type="text" 
+      [(ngModel)]="myModelo.telefonoMotoTaxi" 
+      name="telefonoMotoTaxi"
+      #telefonoMotoTaxi="ngModel"
+      placeholder="7000008"
+      maxlength="8"
+      required>
+    </ion-input>
   </ion-item>
+  <div class="form-error" *ngIf="telefonoMotoTaxi.errors && (telefonoMotoTaxi.dirty || telefonoMotoTaxi.touched)">
+    <p style="font-size:15px;color:#f04141" [hidden]="!telefonoMotoTaxi.errors.required">Telefono o celular obligatorio.</p>
+    <p style="font-size:15px;color:#f04141" [hidden]="!telefonoMotoTaxi.errors.maxlength">Numero de caract.</p>
+  </div>
+
+
+
+
   <ion-item>
     <ion-label position="floating">Placa del Vehículo </ion-label>
-    <ion-input type="text" [(ngModel)]="placaMotoTaxi" name="placaMotoTaxi" onkeyup="javascript:this.value=this.value.toUpperCase();"></ion-input>
+    <ion-input 
+    type="text" 
+      [(ngModel)]="myModelo.placaMotoTaxi" 
+      name="placaMotoTaxi"
+      #placaMotoTaxi="ngModel"
+      placeholder="1234ABC"
+      onkeyup="javascript:this.value=this.value.toUpperCase();"
+      maxlength="7"
+      required
+    ></ion-input>
   </ion-item>
-  <br>
+  <div class="form-error" *ngIf="placaMotoTaxi.errors && (placaMotoTaxi.dirty || placaMotoTaxi.touched)">
+    <p style="font-size:15px;color:#f04141" [hidden]="!placaMotoTaxi.errors.required">Placa obligatoria.</p>
+    <p style="font-size:15px;color:#f04141" [hidden]="!placaMotoTaxi.errors.maxlength">Numero de caract.</p>
+  </div>
+
+
+
   
   <ion-item>
     <img *ngIf="image" [src]="image" alt="image">
     </ion-item>
     
+
+
     <ion-icon name="camera" (click)="tomarFoto()" class="iconcamara"></ion-icon>
   <ion-button (click)="modificando()" expand="block" color="secondary">Modificar</ion-button>
+
+</form>
 </ion-content>

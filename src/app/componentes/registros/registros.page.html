@@ -19,8 +19,12 @@
       <ion-input 
       type="text" 
       [(ngModel)]="myModelo.nombreMotoTaxi" 
-      name="nombreMotoTaxi" #nombreMotoTaxi="ngModel"
-        placeholder="Nombre" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+      name="nombreMotoTaxi" 
+      #nombreMotoTaxi="ngModel"
+        placeholder="Nombre" 
+        onkeyup="javascript:this.value=this.value.toUpperCase();" 
+        required
+        >
       </ion-input>
     </ion-item>
     <div  class="form-error" *ngIf="nombreMotoTaxi.errors && (nombreMotoTaxi.dirty || nombreMotoTaxi.touched)">
@@ -37,7 +41,7 @@
       #apellidoMotoTaxi="ngModel" 
       name="apellidoMotoTaxi"
       placeholder="Apellido"  
-      onkeyup="javascript:this.value=this.value.toUpperCase();" 
+      onkeyup="javascript:this.value=this.value.toUpperCase();"      
       required>
       </ion-input>
     </ion-item>
@@ -87,7 +91,7 @@
     <ion-item>
       <ion-label position="floating">Teléfono/celular </ion-label>
       <ion-input 
-      type="tel" 
+      type="text" 
       [(ngModel)]="myModelo.telefonoMotoTaxi" 
       name="telefonoMotoTaxi"
       #telefonoMotoTaxi="ngModel"
@@ -170,7 +174,8 @@
       <ion-label>Tomar fotografía</ion-label>
       <ion-icon name="camera" (click)="tomarFoto()" class="iconcamara"></ion-icon>
      
-      <ion-button (click)="registrando()" expand="block" color="secondary">Registrar</ion-button>
+      <ion-button (click)="registrando()" expand="block" color="secondary"}
+      id="btnregistrar" disabled="true">Registrar</ion-button>
 
   </form>
 
