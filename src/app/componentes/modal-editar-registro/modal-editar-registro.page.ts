@@ -27,12 +27,18 @@ export class ModalEditarRegistroPage implements OnInit {
 
   urlImagen: Observable<string>;
   image: any;
+  myModelo: any;
 
   constructor(private modalCtrl: ModalController,
     private navParam: NavParams,
     private mototaxiService: MototaxisService,
     private AFStorage: AngularFireStorage, 
-    private fotosService: FotosService) { }
+    private fotosService: FotosService) 
+    {  
+      this.myModelo = {};
+    }
+
+  ionViewDidLoad() { }
 
   ngOnInit() {
     const data = this.navParam.get('value') as motoTaxi;
