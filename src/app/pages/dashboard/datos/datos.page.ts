@@ -3,9 +3,7 @@ import { MototaxisService, motoTaxi } from "../../../servicios/mototaxis.service
 import { Router } from "@angular/router";
 import { AuthService } from "../../../servicios/auth.service";
 import { AlertController } from '@ionic/angular';
-import { isNullOrUndefined } from 'util';
-import { AngularFireAuth } from "@angular/fire/auth";
-import { map } from "rxjs/operators";
+
 
 @Component({
   selector: 'app-datos',
@@ -54,4 +52,5 @@ export class DatosPage implements OnInit {
     await alert.present();
 
   }
+
 }
