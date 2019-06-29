@@ -3,6 +3,7 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { database } from 'firebase';
 import { map } from "rxjs/operators";
 import { FotosService } from "../servicios/fotos.service";
+import { AlertController } from '@ionic/angular';
 
 
 
@@ -21,12 +22,18 @@ export interface motoTaxi {
 
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class MototaxisService {
 
-  constructor(private db: AngularFirestore,private fotosService: FotosService) { }
+  motoTaxi: motoTaxi;
+
+
+  constructor(private db: AngularFirestore,
+              private fotosService: FotosService,
+              public alertCtrl: AlertController) { }
 
   getDatosMotoTaxis() {
     return this.db.collection('motoTaxis').snapshotChanges().pipe(map(taxis => {
@@ -71,13 +78,19 @@ export class MototaxisService {
     this.db.collection('motoTaxis').doc(idMotoTaxi).update({
       disponible: true
     })
-    alert("Disponible");
+    this.mensajeBienvenida();
   }
 
   cambiarDisponibilidadFalse(idMotoTaxi:string){
     this.db.collection('motoTaxis').doc(idMotoTaxi).update({
       disponible: false
     })
-    alert("No Disponible");
+  }
+
+  async mensajeBienvenida(){
+    const alert = await this.alertCtrl.create({
+      message: `BIENVENID@, ahora usted se encuentra disponible para realizar pedidos`,
+    });
+    await alert.present();
   }
 }

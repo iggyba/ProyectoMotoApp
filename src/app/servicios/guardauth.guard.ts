@@ -22,13 +22,13 @@ export class GuardauthGuard implements CanActivate  {
 
       return this.AFauth.authState.pipe(map(auth => {
         if(isNullOrUndefined(auth))
-        {
-          this.router.navigate(['/login']);
-          return false;
+        {        
+          return true;
         }
         else 
         {
-          return true;
+          this.router.navigate(['/dashboard/datos']);
+          return false;
         }
       }))
       

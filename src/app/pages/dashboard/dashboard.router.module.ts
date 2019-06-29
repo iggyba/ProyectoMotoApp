@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardPage } from './dashboard.page';
+import { GuardauthGuard } from "../../servicios/guardauth.guard";
 
 const routes: Routes = [
   {
@@ -11,24 +12,24 @@ const routes: Routes = [
      children: [
        { path:'ubicacion',
          children: [
-           {   path:'',  loadChildren:'./ubicacion/ubicacion.module#UbicacionPageModule'  }
+           {   path:'',  loadChildren:'./ubicacion/ubicacion.module#UbicacionPageModule' }
          ]
       },
       { path:'confir',
          children: [
-           {   path:'',  loadChildren:'./confir/confir.module#ConfirPageModule'  }
+           {   path:'',  loadChildren:'./confir/confir.module#ConfirPageModule' }
          ]
       },
       {
           path:'datos',
           children: [
-             {   path:'',loadChildren:'./datos/datos.module#DatosPageModule'  }
+             {   path:'',loadChildren:'./datos/datos.module#DatosPageModule'}
           ]
        },
-      {   path:'',  redirectTo:'home',  pathMatch:'full'  }
+      {   path:'',  redirectTo:'datos',  pathMatch:'full'  }
    ]
  },
- {  path:'',  redirectTo:'home',  pathMatch:'full' }
+ {  path:'',  redirectTo:'datos',  pathMatch:'full' }
 ];
 
 @NgModule({

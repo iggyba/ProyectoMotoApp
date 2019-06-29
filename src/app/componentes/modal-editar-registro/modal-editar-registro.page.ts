@@ -57,15 +57,6 @@ export class ModalEditarRegistroPage implements OnInit {
   }
 
 
-  /*onUpload(e) {
-
-    const id = Math.random().toString(36).substring(2);
-    const file = e.target.files[0];
-    const filePath = `profile_${id}`;
-    const ref = this.AFStorage.ref(filePath);
-    const task = this.AFStorage.upload(filePath, file);
-    task.snapshotChanges().pipe(finalize(() => this.urlImagen = ref.getDownloadURL())).subscribe();
-  }*/
 
   modificando() {
 
