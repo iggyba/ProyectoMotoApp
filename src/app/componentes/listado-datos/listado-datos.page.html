@@ -1,12 +1,26 @@
-<ion-header>
+
+   
+
+<!--<ion-header>
   <ion-toolbar class="new-background-color">
     <ion-title text-center class="new-text-color">Listado de moto taxistas</ion-title>
   </ion-toolbar>
+</ion-header>-->
+
+<ion-header>
+  <ion-toolbar class="new-background-color" color="secondary">
+    <ion-buttons>
+      <ion-icon name="arrow-round-back" (click)='volver()' class="iconoBoton" ></ion-icon>
+      <ion-title text-center class="new-text-color">Listado de mototaxistas</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
+
+<ion-searchbar animated placeholder="Buscar" ng-model="busqueda"></ion-searchbar>
 
 <ion-content>
   <ion-list>
-    <div *ngFor='let motoTaxi of motoTaxisArreglo'>
+   <div *ngFor='let motoTaxi of motoTaxisArreglo'>
       <ion-item>
         <ion-img class="imagen" [src]="motoTaxi?.imagenMotoTaxi"></ion-img>
       </ion-item>

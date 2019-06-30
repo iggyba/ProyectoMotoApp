@@ -42,14 +42,14 @@ export class ModalEditarRegistroPage implements OnInit {
 
   ngOnInit() {
     const data = this.navParam.get('value') as motoTaxi;
-    this.nombreMotoTaxi = data.nombreMotoTaxi;
-    this.apellidoMotoTaxi = data.apellidoMotoTaxi;
-    this.telefonoMotoTaxi = data.telefonoMotoTaxi;
-    this.placaMotoTaxi = data.placaMotoTaxi;
-    this.carnetIdentidadMotoTaxi = data.carnetIdentidadMotoTaxi;
-    this.fechaNacimientoMotoTaxi = data.fechaNacimientoMotoTaxi;
-    this.imagenMotoTaxi = data.imagenMotoTaxi;
-    this.idMotoTaxi=data.idMotoTaxi;
+    this.myModelo.nombreMotoTaxi = data.nombreMotoTaxi;
+    this.myModelo.apellidoMotoTaxi = data.apellidoMotoTaxi;
+    this.myModelo.telefonoMotoTaxi = data.telefonoMotoTaxi;
+    this.myModelo.placaMotoTaxi = data.placaMotoTaxi;
+    this.myModelo.carnetIdentidadMotoTaxi = data.carnetIdentidadMotoTaxi;
+    this.myModelo.fechaNacimientoMotoTaxi = data.fechaNacimientoMotoTaxi;
+    this.myModelo.imagenMotoTaxi = data.imagenMotoTaxi;
+    this.myModelo.idMotoTaxi=data.idMotoTaxi;
   }
 
   onCloseModal() {
@@ -60,9 +60,10 @@ export class ModalEditarRegistroPage implements OnInit {
 
   modificando() {
 
-    this.mototaxiService.modificarMotoTaxi(this.nombreMotoTaxi,this.apellidoMotoTaxi,this.telefonoMotoTaxi,
-      this.carnetIdentidadMotoTaxi,this.placaMotoTaxi,this.fechaNacimientoMotoTaxi,
-      this.imagenMotoTaxi,this.idMotoTaxi);
+
+    this.mototaxiService.modificarMotoTaxi(this.myModelo.nombreMotoTaxi,this.myModelo.apellidoMotoTaxi,this.myModelo.telefonoMotoTaxi,
+      this.myModelo.carnetIdentidadMotoTaxi,this.myModelo.placaMotoTaxi,this.myModelo.fechaNacimientoMotoTaxi,
+      this.myModelo.imagenMotoTaxi,this.myModelo.idMotoTaxi);
     this.onCloseModal();
   }
 

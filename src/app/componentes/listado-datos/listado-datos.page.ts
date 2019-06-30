@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MototaxisService, motoTaxi } from "../../servicios/mototaxis.service";
 import { AlertController, ModalController,LoadingController } from '@ionic/angular';
 import { ModalEditarRegistroPage } from '../modal-editar-registro/modal-editar-registro.page';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-listado-datos',
@@ -15,7 +16,8 @@ export class ListadoDatosPage implements OnInit {
   constructor(public mototaxisService: MototaxisService,
     public alertCtrl: AlertController,
     private modalCtrl: ModalController,
-    private loadingController: LoadingController) { }
+    private loadingController: LoadingController,
+    public router: Router) { }
 
   ngOnInit() {
     this.cargarLista();
@@ -66,4 +68,7 @@ export class ListadoDatosPage implements OnInit {
     })
   }
 
+  volver(){
+    this.router.navigate(['/menu-registros']);
+  }
 }

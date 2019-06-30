@@ -4,6 +4,7 @@ import { database } from 'firebase';
 import { map } from "rxjs/operators";
 import { FotosService } from "../servicios/fotos.service";
 import { AlertController } from '@ionic/angular';
+import { Router } from "@angular/router";
 
 
 
@@ -19,6 +20,7 @@ export interface motoTaxi {
   email: string;
   password: string;
   imagenMotoTaxi: string;
+  disponibilidad: boolean;
 
 }
 
@@ -33,7 +35,8 @@ export class MototaxisService {
 
   constructor(private db: AngularFirestore,
               private fotosService: FotosService,
-              public alertCtrl: AlertController) { }
+              public alertCtrl: AlertController,
+              public router: Router) { }
 
   getDatosMotoTaxis() {
     return this.db.collection('motoTaxis').snapshotChanges().pipe(map(taxis => {
@@ -46,10 +49,19 @@ export class MototaxisService {
   }
 
   getMototaxiUsuario(idMotoTaxi: string) {
+
     return this.db.collection('motoTaxis').doc(idMotoTaxi).snapshotChanges().pipe(map(taxis => {
       const data = taxis.payload.data() as motoTaxi;
+     // if(data.disponibilidad==false){
       data.idMotoTaxi = taxis.payload.id;
+     // this.cambiarDisponibilidadTrue(data.idMotoTaxi);
       return data;
+      /*}
+      else
+      {*/
+      /*  alert("Ya se ingresó desde otro dispositivo")
+        this.router.navigate(['/login']);
+      }*/
     }))
   }
 
@@ -71,7 +83,7 @@ export class MototaxisService {
       imagenMotoTaxi: imagenMotoTaxiM
     })
     this.fotosService.uploadImage(imagenMotoTaxiM);
-    alert("Mototaxista modificado con éxito");
+    this.mensajeModificacionExito();
   }
 
   cambiarDisponibilidadTrue(idMotoTaxi:string){
@@ -90,6 +102,13 @@ export class MototaxisService {
   async mensajeBienvenida(){
     const alert = await this.alertCtrl.create({
       message: `BIENVENID@, ahora usted se encuentra disponible para realizar pedidos`,
+    });
+    await alert.present();
+  }
+
+  async mensajeModificacionExito(){
+    const alert = await this.alertCtrl.create({
+      message: `Mototaxista modificado con éxito`,
     });
     await alert.present();
   }

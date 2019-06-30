@@ -94,6 +94,10 @@ export class RegistrosPage implements OnInit {
     }
 
   }
+
+  volver(){
+    this.router.navigate(['/menu-registros']);
+  }
 }
 
 

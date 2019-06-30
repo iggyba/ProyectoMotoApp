@@ -32,7 +32,6 @@ export class LoginPage implements OnInit {
      this.password="";
      
     }).catch(err => {
-      
       alert("Los datos introducidos fueron incorrectos");
       this.email = "";
       this.password = "";
