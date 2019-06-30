@@ -79,7 +79,7 @@ export class RegistrosPage implements OnInit {
         this.image = null;
 
       }).catch(err => {
-        alert("No se pudo registrar al moto taxista");
+        console.log("No se pudo registrar al moto taxista");
       })
   }
 
