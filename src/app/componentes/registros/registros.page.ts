@@ -98,6 +98,12 @@ export class RegistrosPage implements OnInit {
   volver(){
     this.router.navigate(['/menu-registros']);
   }
+
+
+  soloLetras(e){
+   const key = e.detail.value
+   console.log(key);
+  }
 }
 
 
