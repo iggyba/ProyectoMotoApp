@@ -5,7 +5,7 @@
 </ion-header>-->
 
 <ion-header>
-  <ion-toolbar class="new-background-color" color="secondary">
+  <ion-toolbar class="new-background-color" color="primary">
     <ion-buttons>
       <ion-icon name="arrow-round-back" (click)='volver()' class="iconoBoton" ></ion-icon>
       <ion-title text-center class="new-text-color">Registros</ion-title>
@@ -13,7 +13,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding color ="secondary">
   
   <form novalidate>
   
@@ -178,7 +178,7 @@
       <ion-label>Tomar fotografía</ion-label>
       <ion-icon name="camera" (click)="tomarFoto()" class="iconcamara"></ion-icon>
      
-      <ion-button (click)="registrando()" expand="block" color="secondary">Registrar</ion-button>
+      <ion-button (click)="registrando()" expand="block" color="primary">Registrar</ion-button>
 
   </form>
 

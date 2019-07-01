@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar color ="secondary">
+  <ion-toolbar color ="primary">
     <ion-title>Ubicacion en Tiempo Real</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding color ="secondary">
   <ion-item>
     <ion-label>Enviar Ubicación a Central</ion-label>
     <ion-toggle color="tertiary" [(ngModel)]="isToggled" (ionChange)="MandarUbicacion(isToggled)"></ion-toggle>
