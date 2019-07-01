@@ -48,7 +48,7 @@ export class ModalEditarRegistroPage implements OnInit {
     this.myModelo.placaMotoTaxi = data.placaMotoTaxi;
     this.myModelo.carnetIdentidadMotoTaxi = data.carnetIdentidadMotoTaxi;
     this.myModelo.fechaNacimientoMotoTaxi = data.fechaNacimientoMotoTaxi;
-    this.myModelo.imagenMotoTaxi = data.imagenMotoTaxi;
+    this.imagenMotoTaxi = data.imagenMotoTaxi;
     this.myModelo.idMotoTaxi=data.idMotoTaxi;
   }
 
@@ -63,7 +63,7 @@ export class ModalEditarRegistroPage implements OnInit {
 
     this.mototaxiService.modificarMotoTaxi(this.myModelo.nombreMotoTaxi,this.myModelo.apellidoMotoTaxi,this.myModelo.telefonoMotoTaxi,
       this.myModelo.carnetIdentidadMotoTaxi,this.myModelo.placaMotoTaxi,this.myModelo.fechaNacimientoMotoTaxi,
-      this.myModelo.imagenMotoTaxi,this.myModelo.idMotoTaxi);
+      this.imagenMotoTaxi,this.myModelo.idMotoTaxi);
     this.onCloseModal();
   }
 

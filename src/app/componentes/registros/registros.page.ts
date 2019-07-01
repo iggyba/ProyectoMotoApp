@@ -52,16 +52,16 @@ export class RegistrosPage implements OnInit {
 
   ngOnInit() { }
 
-  registrando() { 
+  registrando() {
 
-    this.nombreMotoTaxi=this.myModelo.nombreMotoTaxi;
-    this.apellidoMotoTaxi=this.myModelo.apellidoMotoTaxi;
-    this.telefonoMotoTaxi=this.myModelo.telefonoMotoTaxi;
-    this.placaMotoTaxi=this.myModelo.placaMotoTaxi;
-    this.fechaNacimientoMotoTaxi=this.myModelo.fechaNacimientoMotoTaxi;
-    this.password=this.myModelo.password;
-    this.email=this.myModelo.email;
-    this.carnetIdentidadMotoTaxi=this.myModelo.carnetIdentidadMotoTaxi;
+    this.nombreMotoTaxi = this.myModelo.nombreMotoTaxi;
+    this.apellidoMotoTaxi = this.myModelo.apellidoMotoTaxi;
+    this.telefonoMotoTaxi = this.myModelo.telefonoMotoTaxi;
+    this.placaMotoTaxi = this.myModelo.placaMotoTaxi;
+    this.fechaNacimientoMotoTaxi = this.myModelo.fechaNacimientoMotoTaxi;
+    this.password = this.myModelo.password;
+    this.email = this.myModelo.email;
+    this.carnetIdentidadMotoTaxi = this.myModelo.carnetIdentidadMotoTaxi;
 
     this.authService.registrarMotoTaxi(this.nombreMotoTaxi, this.apellidoMotoTaxi, this.telefonoMotoTaxi,
       this.placaMotoTaxi, this.email, this.password, this.imagenMotoTaxi,
@@ -95,15 +95,11 @@ export class RegistrosPage implements OnInit {
 
   }
 
-  volver(){
+  volver() {
     this.router.navigate(['/menu-registros']);
   }
 
 
-  soloLetras(e){
-   const key = e.detail.value
-   console.log(key);
-  }
 }
 
 
