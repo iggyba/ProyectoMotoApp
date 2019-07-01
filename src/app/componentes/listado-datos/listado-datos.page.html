@@ -8,7 +8,7 @@
 </ion-header>-->
 
 <ion-header>
-  <ion-toolbar class="new-background-color" color="secondary">
+  <ion-toolbar class="new-background-color" color="primary">
     <ion-buttons>
       <ion-icon name="arrow-round-back" (click)='volver()' class="iconoBoton" ></ion-icon>
       <ion-title text-center class="new-text-color">Listado de mototaxistas</ion-title>
@@ -18,7 +18,7 @@
 
 <ion-searchbar animated placeholder="Buscar" (ionChange)="buscar($event)" color="primary"></ion-searchbar>
 
-<ion-content>
+<ion-content padding color ="secondary">
   <ion-list>
    <div *ngFor="let motoTaxi of motoTaxisArreglo | filtro: textoBuscar">
       <ion-item>
@@ -69,10 +69,10 @@
 
       <ion-row>
         <ion-col width-50 style="text-align: right">
-          <ion-button expand="block" color="secondary" (click)="onOpenEditModal(motoTaxi)">Modificar</ion-button>
+          <ion-button expand="block" color="primary" (click)="onOpenEditModal(motoTaxi)">Modificar</ion-button>
         </ion-col>
         <ion-col width-50 style="text-align: left">
-          <ion-button expand="block" color="secondary" (click)="onDelete(motoTaxi)">Eliminar</ion-button>
+          <ion-button expand="block" color="primary" (click)="onDelete(motoTaxi)">Eliminar</ion-button>
         </ion-col>
       </ion-row>
     </div>
