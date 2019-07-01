@@ -12,12 +12,14 @@ import { Router } from "@angular/router";
 export class ListadoDatosPage implements OnInit {
 
   public motoTaxisArreglo: any = [];
+  public textoBuscar='';
 
   constructor(public mototaxisService: MototaxisService,
     public alertCtrl: AlertController,
     private modalCtrl: ModalController,
     private loadingController: LoadingController,
-    public router: Router) { }
+    public router: Router,
+    ) { }
 
   ngOnInit() {
     this.cargarLista();
@@ -70,5 +72,9 @@ export class ListadoDatosPage implements OnInit {
 
   volver(){
     this.router.navigate(['/menu-registros']);
+  }
+
+  buscar(e){
+    this.textoBuscar = e.detail.value;
   }
 }

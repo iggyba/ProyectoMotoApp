@@ -16,20 +16,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-searchbar animated placeholder="Buscar" ng-model="busqueda"></ion-searchbar>
+<ion-searchbar animated placeholder="Buscar" (ionChange)="buscar($event)" color="primary"></ion-searchbar>
 
 <ion-content>
   <ion-list>
-   <div *ngFor='let motoTaxi of motoTaxisArreglo'>
+   <div *ngFor="let motoTaxi of motoTaxisArreglo | filtro: textoBuscar">
       <ion-item>
         <ion-img class="imagen" [src]="motoTaxi?.imagenMotoTaxi"></ion-img>
       </ion-item>
-      <ion-item>
+     <!-- <ion-item>
         <ion-label>
           <h2><b>Id moto taxista:</b></h2>
           <h3>{{motoTaxi?.idMotoTaxi}}</h3>
         </ion-label>
-      </ion-item>
+      </ion-item>-->
       <ion-item>
         <ion-label>
           <h2><b>Nombre:</b></h2>

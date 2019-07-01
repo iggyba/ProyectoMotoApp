@@ -22,6 +22,7 @@ import { File } from '@ionic-native/file/ngx';
 import { FormsModule } from "@angular/forms";
 import { CustomFormsModule } from 'ng2-validation'
 import { BackgroundMode } from "@ionic-native/background-mode/ngx";
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,7 +36,8 @@ import { BackgroundMode } from "@ionic-native/background-mode/ngx";
     AngularFirestoreModule,
     AngularFireStorageModule,
     FormsModule,
-    CustomFormsModule
+    CustomFormsModule,
+    PipesModule
     ],
   providers: [
     StatusBar,
